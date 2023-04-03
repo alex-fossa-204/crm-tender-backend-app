@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  postgres-server:
+    container_name: postgres-server
+    hostname: postgres-server
+    image: 'postgres:latest'
+    restart: always
+    ports:
+      - '5430:5432'
+    volumes:
+      - ./postgresData:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=tender-crm-db
