@@ -9,9 +9,10 @@
     </preConditions>
 
     <changeSet id="DDL_01.000.00" author="alex-fossa-204">
-        <sqlFile path="01.000.00/scripts/2023_04_03_DDL_init_script.sql" relativeToChangelogFile="true" stripComments="true"/>
+        <sqlFile path="/01.000.00/scripts/2023_04_03_DDL_init_script.sql" relativeToChangelogFile="true" stripComments="true"/>
+        <sqlFile path="/01.000.00/scripts/2023_04_03_DML_technology_insert_script.sql" relativeToChangelogFile="true" stripComments="true"/>
         <rollback>
-            <sqlFile path="01.000.00/rollback/2023_04_03_DDL_rollback_script.sql" relativeToChangelogFile="true" stripComments="true"/>
+            <sqlFile path="/01.000.00/rollback/2023_04_03_DDL_rollback_script.sql" relativeToChangelogFile="true" stripComments="true"/>
         </rollback>
     </changeSet>
 

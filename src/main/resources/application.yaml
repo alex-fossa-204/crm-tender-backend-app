@@ -1,6 +1,6 @@
 spring:
-  r2dbc:
-    url: r2dbc:postgresql://127.0.0.1:5430/tender-crm-db
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5430/tender-crm-db
     username: postgres
     password: root
 
@@ -8,6 +8,6 @@ spring:
     url: jdbc:postgresql://127.0.0.1:5430/tender-crm-db
     user: postgres
     password: root
-    change-log: classpath:db/changelog-master.xml
+    change-log: classpath:/db/changelog-master.xml
     enabled: true
 

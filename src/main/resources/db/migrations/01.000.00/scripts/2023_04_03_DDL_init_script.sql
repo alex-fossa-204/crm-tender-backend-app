@@ -11,8 +11,8 @@ create table if not exists employee
     lastname                       varchar(64)                not null,
     middlename                     varchar(64),
     organisation_name              varchar(64)                not null,
-    employee_location              varchar(64)                not null,
-    experience_before_hiring_month int                        not null,
+    employee_location              jsonb                      not null,
+    experience_before_hiring_month double precision           not null,
     hiring_date                    date                       not null,
     firing_date                    date,
     general_info                   varchar(256),
@@ -20,18 +20,18 @@ create table if not exists employee
     employee_documents_info        jsonb,
     current_project_info           jsonb
 
-    );
+);
 
 
 
 create table if not exists technology
 (
-    id                     bigint unique generated always as identity,
+    id                     uuid unique,
     technology_uuid        uuid,
     technology_name        varchar(64) not null,
     technology_description varchar(256),
     department             varchar(64) not null
-    );
+);
 
 
 create type technology_grade_type as enum (
@@ -47,21 +47,21 @@ create type technology_grade_type as enum (
 create table if not exists employee_technologies
 (
     employee_id       bigint,
-    technology_id     bigint,
+    technology_id     uuid,
     technology_grade  technology_grade_type,
     grade_update_date timestamp
 );
 alter table if exists employee_technologies
     add constraint employee_technologies_employees_fk foreign key (employee_id)
-    references employee (id) match simple
-    on update no action
-       on delete no action
+        references employee (id) match simple
+        on update no action
+        on delete no action
         not valid;
 alter table if exists employee_technologies
     add constraint employee_technologies_technologies_fk foreign key (technology_id)
-    references technology (id) match simple
-    on update no action
-       on delete no action
+        references technology (id) match simple
+        on update no action
+        on delete no action
         not valid;
 
 
@@ -99,7 +99,7 @@ create table if not exists tender
     tender_estimation_criteria     jsonb                    not null,
     employee_document_requirements jsonb                    not null
 
-    );
+);
 
 create table if not exists customer
 (
@@ -107,16 +107,16 @@ create table if not exists customer
     customer_uuid         uuid,
     customer_name         varchar(256) not null,
     customer_general_info jsonb        not null
-    );
+);
 
 alter table if exists tender
     add column customer_id bigint;
 
 alter table if exists tender
     add constraint customers_tender_fk foreign key (customer_id)
-    references customer (id) match simple
-    on update no action
-       on delete no action
+        references customer (id) match simple
+        on update no action
+        on delete no action
         not valid;
 
 
@@ -126,7 +126,7 @@ create table if not exists role
     id         uuid not null unique,
     role_name  varchar(16),
     privileges jsonb
-    );
+);
 
 create type manager_state_type as enum (
     'АКТИВНЫЙ',
@@ -149,7 +149,7 @@ create table if not exists manager
     email                  varchar(128),
     login                  varchar(128),
     password               varchar(256)
-    );
+);
 
 alter table manager
     add column role_id uuid;
@@ -158,7 +158,7 @@ alter table manager
         references role (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 
 create type employee_tender_state_type as enum (
@@ -183,21 +183,21 @@ alter table employee_tenders
         references employee (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 alter table employee_tenders
     add constraint employee_tenders_manager_fk foreign key (manager_id)
         references manager (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 alter table employee_tenders
     add constraint employee_tenders_tender_fk foreign key (tender_id)
         references tender (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 
 create type lot_global_state_type as enum (
@@ -224,7 +224,7 @@ alter table lot
         references tender (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 
 create type employee_lot_state_type as enum (
@@ -235,12 +235,12 @@ create type employee_lot_state_type as enum (
 
 create table if not exists employee_lots
 (
-    id bigint unique generated always as identity,
-    employee_id bigint,
-    lot_id bigint,
-    employee_lot_state employee_lot_state_type,
-    employee_lot_start_timestamp timestamp,
-    employee_lot_stop_timestamp timestamp,
+    id                            bigint unique generated always as identity,
+    employee_id                   bigint,
+    lot_id                        bigint,
+    employee_lot_state            employee_lot_state_type,
+    employee_lot_start_timestamp  timestamp,
+    employee_lot_stop_timestamp   timestamp,
     employee_lot_update_timestamp timestamp
 );
 
@@ -249,11 +249,11 @@ alter table employee_lots
         references employee (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
 
 alter table employee_lots
     add constraint employee_lots_lots_fk foreign key (lot_id)
         references lot (id) match simple
         on update no action
         on delete no action
-    not valid;
+        not valid;
