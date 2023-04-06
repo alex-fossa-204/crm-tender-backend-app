@@ -14,7 +14,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
-public class TechnologyRepositoryTest {
+class TechnologyRepositoryTest {
 
     @Autowired
     private TechnologyRepository technologyRepository;

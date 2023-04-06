@@ -20,7 +20,6 @@ import java.io.IOException;
 
 import java.util.List;
 
-//TODO: попробовать реализовать JsonNode
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor

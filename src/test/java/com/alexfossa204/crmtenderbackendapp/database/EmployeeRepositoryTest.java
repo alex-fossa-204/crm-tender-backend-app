@@ -38,6 +38,7 @@ class EmployeeRepositoryTest {
 
     @AfterEach
     void flushEmployeeTable() {
+        employeeTechnologyRepository.deleteAll();
         employeeRepository.deleteAll();
     }
 

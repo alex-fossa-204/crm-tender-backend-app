@@ -106,7 +106,7 @@ create table if not exists customer
     id                    bigint unique generated always as identity,
     customer_uuid         uuid,
     customer_name         varchar(256) not null,
-    customer_general_info jsonb        not null
+    customer_general_info varchar(256) not null
 );
 
 alter table if exists tender
@@ -145,7 +145,7 @@ create table if not exists manager
     registration_timestamp timestamp,
     last_login_timestamp   timestamp,
     update_timestamp       timestamp,
-    general_info           jsonb,
+    general_info           varchar(256),
     email                  varchar(128),
     login                  varchar(128),
     password               varchar(256)
@@ -211,12 +211,13 @@ create type lot_global_state_type as enum (
 create table if not exists lot
 (
     id                     bigint unique generated always as identity,
+    lot_state              lot_global_state_type,
     lot_uuid               uuid,
     lot_data               jsonb,
     lot_creation_timestamp timestamp,
     lot_update_timestamp   timestamp,
-    tender_id              bigint,
-    lot_state              lot_global_state_type
+    tender_id              bigint
+
 );
 
 alter table lot

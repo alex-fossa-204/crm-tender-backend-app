@@ -24,6 +24,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
@@ -46,6 +47,7 @@ public class Employee {
 
     @Column
     @Getter
+    @Setter
     private UUID employeeUuid;
 
 
@@ -53,62 +55,76 @@ public class Employee {
     @Column(columnDefinition = "enum")
     @Type(PostgreSQLEnumType.class)
     @Getter
+    @Setter
     private EmployeeGlobalState employeeGlobalState;
 
     @Column
     @Getter
+    @Setter
     private String firstname;
 
     @Column
     @Getter
+    @Setter
     private String lastname;
 
     @Column
     @Getter
+    @Setter
     private String middlename;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
     @Getter
+    @Setter
     private Map<String, String> contacts;
 
     @Column
     @Getter
+    @Setter
     private String organisationName;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
     @Getter
+    @Setter
     private Map<String, String> employeeLocation;
 
     @Column
     @Getter
+    @Setter
     private Double experienceBeforeHiringMonth;
 
     @Column
     @Getter
+    @Setter
     private LocalDate hiringDate;
 
     @Column
     @Getter
+    @Setter
     private LocalDate firingDate;
 
     @Column
     @Getter
+    @Setter
     private String generalInfo;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
     @Getter
+    @Setter
     private Map<String, String> employeeDocumentsInfo;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
     @Getter
+    @Setter
     private Map<String, String> currentProjectInfo;
 
     @OneToMany(mappedBy = "employeeEmployeeTechnology", fetch = FetchType.EAGER)
     @Getter
+    @Setter
     @Builder.Default
     private List<EmployeeTechnology> employeeTechnologies = new ArrayList<>();
 

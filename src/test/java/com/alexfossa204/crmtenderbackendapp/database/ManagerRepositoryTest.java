@@ -1,0 +1,50 @@
+package com.alexfossa204.crmtenderbackendapp.database;
+
+import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
+import com.alexfossa204.crmtenderbackendapp.database.repository.RoleRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static com.alexfossa204.crmtenderbackendapp.database.factory.ManagerStubFactory.supplyManagerDefaultStub;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.jupiter.api.Assertions.assertAll;
+
+@SpringBootTest
+public class ManagerRepositoryTest {
+
+    @Autowired
+    private ManagerRepository managerRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @AfterEach
+    void flushManagerTable() {
+        managerRepository.deleteAll();
+    }
+
+    @Test
+    void when_attempt_to_save_manager_with_persisted_role() {
+
+        var persistedRole = roleRepository.findAll().stream().findFirst().orElseThrow(() -> new RuntimeException("No value present"));
+
+        var detachedManagerEntity = supplyManagerDefaultStub(persistedRole);
+
+        var persistedManagerEntity = managerRepository.save(detachedManagerEntity);
+
+        assertAll("Проверка сохранения тестовой записи",
+                () -> assertThat(persistedManagerEntity, is(notNullValue())),
+                () -> assertThat(persistedManagerEntity.getRole(), equalTo(persistedRole))
+        );
+
+
+    }
+
+
+
+}
