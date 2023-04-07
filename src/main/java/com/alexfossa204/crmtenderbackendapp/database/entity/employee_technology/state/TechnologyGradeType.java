@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology;
+package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.state;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

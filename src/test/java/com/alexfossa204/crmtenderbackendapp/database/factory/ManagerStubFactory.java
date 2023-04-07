@@ -2,7 +2,7 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Role;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.ManagerStateType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
 
 import java.time.LocalDateTime;
 import java.util.Map;

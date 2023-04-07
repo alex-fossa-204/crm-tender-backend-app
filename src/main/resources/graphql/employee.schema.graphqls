@@ -1,0 +1,40 @@
+scalar Date
+
+type Query {
+    findAllEmployees: [Employee]
+}
+
+type Mutation {
+    saveEmployee(employee: EmployeeInput): Employee
+    updateEmployee(employee: EmployeeInput): Employee
+    deleteEmployee(employeeUuid: ID): EmployeeDeleted
+}
+
+type Employee {
+    employeeUuid: ID
+    employeeGlobalState: String
+    firstname: String
+    lastname: String
+    middlename: String
+    organisationName: String
+    experienceBeforeHiringMonth: Float
+    hiringDate: Date
+    firingDate: Date
+    generalInfo: String
+}
+
+type EmployeeDeleted {
+    employeeUuid: ID
+}
+
+input EmployeeInput {
+    firstname: String
+    lastname: String
+    middlename: String
+    employeeGlobalState: String
+    organisationName: String
+    experienceBeforeHiringMonth: Float
+    hiringDate: Date
+    firingDate: Date
+    generalInfo: String
+}

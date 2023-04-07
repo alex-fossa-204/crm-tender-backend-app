@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot;
+package com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.state;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

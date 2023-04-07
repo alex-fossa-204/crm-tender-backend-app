@@ -2,8 +2,8 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Customer;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.TenderGlobalStateType;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.TenderType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderGlobalStateType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderType;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

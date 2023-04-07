@@ -2,7 +2,7 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.EmployeeGlobalState;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.EmployeeGlobalState;
 
 import java.time.LocalDate;
 import java.util.List;

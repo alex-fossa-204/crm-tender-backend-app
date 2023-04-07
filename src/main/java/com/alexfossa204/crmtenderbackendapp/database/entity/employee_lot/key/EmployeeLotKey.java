@@ -1,28 +1,25 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology;
+package com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.key;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @Builder
 @Embeddable
-public class EmployeeTechnologyKey implements Serializable {
+public class EmployeeLotKey implements Serializable {
 
     @Column(name = "employee_id")
     private Long employeeId;
 
-    @Column(name = "technology_id")
-    private UUID technologyId;
+    @Column(name = "lot_id")
+    private Long lotId;
 
 }

@@ -2,6 +2,9 @@ package com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
+import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.key.EmployeeLotKey;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.state.EmployeeLotState;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
@@ -42,6 +45,10 @@ public class EmployeeLot {
     @MapsId("lotId")
     @JoinColumn(name = "lot_id")
     private Lot lotEmployeeLot;
+
+    @ManyToOne
+    @JoinColumn(name = "manager_id")
+    private Manager lotManager;
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")

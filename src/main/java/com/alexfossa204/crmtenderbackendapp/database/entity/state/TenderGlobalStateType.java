@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.enums;
+package com.alexfossa204.crmtenderbackendapp.database.entity.state;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

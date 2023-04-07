@@ -2,6 +2,15 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.5'
     id 'io.spring.dependency-management' version '1.1.0'
+    id 'io.github.kobylynskyi.graphql.codegen' version "5.7.1"
+}
+
+springBoot {
+    mainClassName = 'com.alexfossa204.crmtenderbackendapp.CrmTenderBackendAppApplication'
+}
+
+bootJar {
+    mainClassName = 'com.alexfossa204.crmtenderbackendapp.CrmTenderBackendAppApplication'
 }
 
 group = 'com.alexfossa204'
@@ -15,7 +24,9 @@ configurations {
 }
 
 repositories {
+    jcenter()
     mavenCentral()
+    mavenLocal()
 }
 
 ext {
@@ -25,8 +36,11 @@ ext {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-graphql'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     implementation 'org.liquibase:liquibase-core'
     implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.3.1'
+    implementation "com.graphql-java:graphql-java-extended-scalars:20.0"
 
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
@@ -38,6 +52,24 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter'
     testImplementation 'org.testcontainers:postgresql'
     testImplementation 'org.hamcrest:hamcrest-all:1.3'
+}
+
+compileJava.dependsOn "graphqlCodegen"
+
+sourceSets.main.java.srcDir "$buildDir/generated"
+
+graphqlCodegen {
+    graphqlSchemaPaths = [
+            "$projectDir/src/main/resources/graphql/employee.schema.graphqls".toString()
+    ]
+    outputDir = new File("$buildDir/generated")
+    //apiPackageName = "com.alexfossa204.crmtenderbackendapp"
+    modelPackageName = "com.alexfossa204.crmtenderbackendapp.controller.graphql.model"
+    modelNameSuffix = "TO"
+    generateApis = true
+    supportUnknownFields = true
+    unknownFieldsPropertyName = "additionalFields"
+
 }
 
 dependencyManagement {

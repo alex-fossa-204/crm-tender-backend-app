@@ -11,3 +11,14 @@ spring:
     change-log: classpath:/db/changelog-master.xml
     enabled: true
 
+  graphql:
+    path: /graphql
+    schema:
+      locations: graphql/**
+    graphiql:
+      enabled: false
+      path: /graphiql
+
+logging:
+  level:
+    root: info
