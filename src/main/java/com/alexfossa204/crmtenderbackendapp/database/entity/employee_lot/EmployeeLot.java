@@ -52,9 +52,6 @@ public class EmployeeLot {
     private LocalDateTime employeeLotStartTimestamp;
 
     @Column
-    private LocalDateTime employeeLotStopTimestamp;
-
-    @Column
     private LocalDateTime employeeLotUpdateTimestamp;
 
 }

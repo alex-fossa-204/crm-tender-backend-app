@@ -123,8 +123,6 @@ class EmployeeRepositoryTest {
                 () -> assertThat(persistedEmployeeAngularTechnology1, is(notNullValue()))
         );
 
-
-
         Employee persistedEmployee2 = employeeRepository.save(supplyEmployeeDefaultStub());
         assertAll("Проверка сохранения тестовой записи employee",
                 () -> assertThat(persistedEmployee2, is(notNullValue()))
