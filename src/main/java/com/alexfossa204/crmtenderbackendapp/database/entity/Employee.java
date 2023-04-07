@@ -2,7 +2,7 @@ package com.alexfossa204.crmtenderbackendapp.database.entity;
 
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.EmployeeLot;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.EmployeeGlobalState;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.EmployeeGlobalState;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.EmployeeTechnology;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
@@ -28,6 +28,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -77,6 +78,9 @@ public class Employee {
 
     @Column
     private Double experienceBeforeHiringMonth;
+
+    @Column
+    private LocalDateTime registrationTimestamp;
 
     @Column
     private LocalDate hiringDate;

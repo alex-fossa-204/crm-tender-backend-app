@@ -2,7 +2,7 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.LotGlobalStateType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.LotGlobalStateType;
 
 import java.time.LocalDateTime;
 import java.util.Map;

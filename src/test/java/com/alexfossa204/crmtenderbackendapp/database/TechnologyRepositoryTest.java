@@ -1,8 +1,10 @@
 package com.alexfossa204.crmtenderbackendapp.database;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
+import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TechnologyRepository;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,6 +16,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
+@ExtendWith(PostgresExtension.class)
 class TechnologyRepositoryTest {
 
     @Autowired

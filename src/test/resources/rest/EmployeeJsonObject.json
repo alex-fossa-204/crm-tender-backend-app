@@ -1,0 +1,37 @@
+{
+  "employeeUuid": "83ac5e40-0edf-4408-912d-b8d3de2ca3aa",
+  "employeeGlobalState": "ДОСТУПЕН",
+  "firstname": "Дмитрий",
+  "lastname": "Вербицкий",
+  "middlename": "Иванович",
+  "contacts": {
+    "email": "dima.koval@astondevs.ru",
+    "skype": "dima.koval",
+    "phoneNumber": "375291010101"
+  },
+  "organisationName": "ООО Астон",
+  "employeeLocation": {
+    "city": "Minsk",
+    "address": "Pobediteley prospect 7A",
+    "country": "Belarus",
+    "postalCode": "210011"
+  },
+  "experienceBeforeHiringMonth": 2.5,
+  "hiringDate": "2023-02-21",
+  "firingDate": null,
+  "generalInfo": "Норм парень",
+  "employeeDocumentsInfo": {
+    "contract": "CON_34079873587878",
+    "passport": "983779853BP8789735NM"
+  },
+  "currentProjectInfo": {
+    "position": "Java Developer",
+    "projectName": "SBER CIB"
+  },
+  "technologies": [
+    {
+      "technologyName": "Java",
+      "technologyGrade": "M1"
+    }
+  ]
+}

@@ -2,9 +2,10 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.EmployeeGlobalState;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.EmployeeGlobalState;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -55,7 +56,8 @@ public class EmployeeStubFactory {
                 .currentProjectInfo(Map.of(
                         "projectName", "SBER CIB",
                         "position", "Java Developer"
-                ));
+                ))
+                .registrationTimestamp(LocalDateTime.now());
         employeeBuilderConsumer.accept(builder);
         return builder.build();
     }

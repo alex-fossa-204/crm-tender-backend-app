@@ -5,7 +5,7 @@ create type employee_global_state_type as enum (
 create table if not exists employee
 (
     id                             bigint unique generated always as identity,
-    employee_uuid                  uuid,
+    employee_uuid                  uuid unique                not null,
     employee_global_state          employee_global_state_type not null,
     firstname                      varchar(64)                not null,
     lastname                       varchar(64)                not null,
@@ -13,6 +13,7 @@ create table if not exists employee
     organisation_name              varchar(64)                not null,
     employee_location              jsonb                      not null,
     experience_before_hiring_month double precision           not null,
+    registration_timestamp         timestamp                  not null default current_timestamp,
     hiring_date                    date                       not null,
     firing_date                    date,
     general_info                   varchar(256),
@@ -26,8 +27,8 @@ create table if not exists employee
 
 create table if not exists technology
 (
-    id                     uuid unique,
-    technology_uuid        uuid,
+    id                     uuid unique not null,
+    technology_uuid        uuid unique not null,
     technology_name        varchar(64) not null,
     technology_description varchar(256),
     department             varchar(64) not null
@@ -82,8 +83,8 @@ create type tender_global_state_type as enum (
 create table if not exists tender
 (
     id                             bigint unique generated always as identity,
-    tender_number                  varchar(256)             not null,
-    tender_name                    varchar(256)             not null,
+    tender_number                  varchar(256) unique      not null,
+    tender_name                    varchar(256) unique      not null,
     tender_global_state            tender_global_state_type not null,
     tender_type_value              tender_type              not null,
     tender_description             jsonb,
@@ -104,7 +105,7 @@ create table if not exists tender
 create table if not exists customer
 (
     id                    bigint unique generated always as identity,
-    customer_uuid         uuid,
+    customer_uuid         uuid unique  not null,
     customer_name         varchar(256) not null,
     customer_general_info varchar(256) not null
 );
@@ -136,8 +137,8 @@ create type manager_state_type as enum (
 create table if not exists manager
 (
     id                     bigint unique generated always as identity,
-    manager_state          manager_state_type,
-    manager_uuid           uuid not null,
+    manager_state          manager_state_type not null,
+    manager_uuid           uuid unique        not null,
     firstname              varchar(64),
     lastname               varchar(64),
     middlename             varchar(64),
@@ -161,45 +162,6 @@ alter table manager
         not valid;
 
 
-create type employee_tender_state_type as enum (
-    'АКТИВНЫЙ',
-    'ПРОИГРАЛ',
-    'ПОБЕДИЛ'
-    );
-create table if not exists employee_tenders
-(
-    id                               bigint unique generated always as identity,
-    employee_id                      bigint,
-    manager_id                       bigint,
-    tender_id                        bigint,
-    employee_tender_state            employee_tender_state_type,
-    employee_tender_start_timestamp  timestamp,
-    employee_tender_stop_timestamp   timestamp,
-    employee_tender_update_timestamp timestamp
-);
-
-alter table employee_tenders
-    add constraint employee_tenders_employees_fk foreign key (employee_id)
-        references employee (id) match simple
-        on update no action
-        on delete no action
-        not valid;
-
-alter table employee_tenders
-    add constraint employee_tenders_manager_fk foreign key (manager_id)
-        references manager (id) match simple
-        on update no action
-        on delete no action
-        not valid;
-
-alter table employee_tenders
-    add constraint employee_tenders_tender_fk foreign key (tender_id)
-        references tender (id) match simple
-        on update no action
-        on delete no action
-        not valid;
-
-
 create type lot_global_state_type as enum (
     'ЗАЯВКА_ПОДАНА_ЗАКАЗЧИКУ',
     'АКТИВНЫЙ',
@@ -211,8 +173,8 @@ create type lot_global_state_type as enum (
 create table if not exists lot
 (
     id                     bigint unique generated always as identity,
-    lot_state              lot_global_state_type,
-    lot_uuid               uuid,
+    lot_state              lot_global_state_type not null,
+    lot_uuid               uuid                  not null unique,
     lot_data               jsonb,
     lot_creation_timestamp timestamp,
     lot_update_timestamp   timestamp,
@@ -236,12 +198,11 @@ create type employee_lot_state_type as enum (
 
 create table if not exists employee_lots
 (
-    id                            bigint unique generated always as identity,
     employee_id                   bigint,
     lot_id                        bigint,
-    employee_lot_state            employee_lot_state_type,
+    manager_id                    bigint,
+    employee_lot_state            employee_lot_state_type not null,
     employee_lot_start_timestamp  timestamp,
-    employee_lot_stop_timestamp   timestamp,
     employee_lot_update_timestamp timestamp
 );
 
@@ -255,6 +216,13 @@ alter table employee_lots
 alter table employee_lots
     add constraint employee_lots_lots_fk foreign key (lot_id)
         references lot (id) match simple
+        on update no action
+        on delete no action
+        not valid;
+
+alter table employee_lots
+    add constraint employee_lots_manager_fk foreign key (manager_id)
+        references manager (id) match simple
         on update no action
         on delete no action
         not valid;

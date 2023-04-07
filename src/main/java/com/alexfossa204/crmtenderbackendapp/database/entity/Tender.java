@@ -1,7 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.TenderGlobalStateType;
-import com.alexfossa204.crmtenderbackendapp.database.entity.enums.TenderType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderGlobalStateType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderType;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Column;

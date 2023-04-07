@@ -1,9 +1,11 @@
 package com.alexfossa204.crmtenderbackendapp.database;
 
+import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.RoleRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,7 +17,8 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
-public class ManagerRepositoryTest {
+@ExtendWith(PostgresExtension.class)
+class ManagerRepositoryTest {
 
     @Autowired
     private ManagerRepository managerRepository;

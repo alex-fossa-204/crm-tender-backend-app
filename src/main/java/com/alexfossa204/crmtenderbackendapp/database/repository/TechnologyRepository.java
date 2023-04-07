@@ -9,4 +9,6 @@ import java.util.UUID;
 @Repository
 public interface TechnologyRepository extends JpaRepository<Technology, UUID> {
 
+    Technology findByTechnologyName(String technologyName);
+
 }

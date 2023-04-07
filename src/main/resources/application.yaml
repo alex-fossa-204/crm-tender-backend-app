@@ -5,9 +5,21 @@ spring:
     password: root
 
   liquibase:
-    url: jdbc:postgresql://127.0.0.1:5430/tender-crm-db
-    user: postgres
-    password: root
     change-log: classpath:/db/changelog-master.xml
     enabled: true
 
+springdoc:
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+    path: /api-docs
+
+logging:
+  level:
+    root: info
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8

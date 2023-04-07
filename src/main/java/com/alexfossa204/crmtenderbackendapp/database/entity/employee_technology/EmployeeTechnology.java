@@ -2,6 +2,8 @@ package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.key.EmployeeTechnologyKey;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.state.TechnologyGradeType;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
