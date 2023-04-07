@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.technology;
+package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
@@ -23,9 +23,9 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
+@Builder
 @Getter
 @Setter
-@Builder
 @Entity
 @Table(name = "employee_technologies")
 public class EmployeeTechnology {
@@ -46,7 +46,6 @@ public class EmployeeTechnology {
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
     @Type(PostgreSQLEnumType.class)
-    @Getter
     private TechnologyGradeType technologyGrade;
 
     @Column

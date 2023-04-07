@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.database.entity.technology;
+package com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;

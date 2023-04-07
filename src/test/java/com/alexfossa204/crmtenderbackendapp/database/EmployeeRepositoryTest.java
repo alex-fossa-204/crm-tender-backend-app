@@ -2,9 +2,9 @@ package com.alexfossa204.crmtenderbackendapp.database;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Technology;
-import com.alexfossa204.crmtenderbackendapp.database.entity.technology.EmployeeTechnology;
-import com.alexfossa204.crmtenderbackendapp.database.entity.technology.EmployeeTechnologyKey;
-import com.alexfossa204.crmtenderbackendapp.database.entity.technology.TechnologyGradeType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.EmployeeTechnology;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.EmployeeTechnologyKey;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.TechnologyGradeType;
 import com.alexfossa204.crmtenderbackendapp.database.repository.EmployeeRepository;
 
 import static org.hamcrest.MatcherAssert.assertThat;

@@ -1,9 +1,10 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
 
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.EmployeeLot;
 import com.alexfossa204.crmtenderbackendapp.database.entity.enums.EmployeeGlobalState;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.technology.EmployeeTechnology;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.EmployeeTechnology;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.Column;
@@ -21,7 +22,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,97 +36,64 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @Entity
 @Table(name = "employee")
 public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
     private Long id;
 
     @Column
-    @Getter
-    @Setter
     private UUID employeeUuid;
 
 
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
     @Type(PostgreSQLEnumType.class)
-    @Getter
-    @Setter
     private EmployeeGlobalState employeeGlobalState;
 
     @Column
-    @Getter
-    @Setter
     private String firstname;
 
     @Column
-    @Getter
-    @Setter
     private String lastname;
 
     @Column
-    @Getter
-    @Setter
     private String middlename;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
-    @Getter
-    @Setter
     private Map<String, String> contacts;
 
     @Column
-    @Getter
-    @Setter
     private String organisationName;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
-    @Getter
-    @Setter
     private Map<String, String> employeeLocation;
 
     @Column
-    @Getter
-    @Setter
     private Double experienceBeforeHiringMonth;
 
     @Column
-    @Getter
-    @Setter
     private LocalDate hiringDate;
 
     @Column
-    @Getter
-    @Setter
     private LocalDate firingDate;
 
     @Column
-    @Getter
-    @Setter
     private String generalInfo;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
-    @Getter
-    @Setter
     private Map<String, String> employeeDocumentsInfo;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
-    @Getter
-    @Setter
     private Map<String, String> currentProjectInfo;
-
-    @OneToMany(mappedBy = "employeeEmployeeTechnology", fetch = FetchType.EAGER)
-    @Getter
-    @Setter
-    @Builder.Default
-    private List<EmployeeTechnology> employeeTechnologies = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "employee_technologies",
@@ -136,6 +103,12 @@ public class Employee {
     @Builder.Default
     private List<Technology> technologies = new ArrayList<>();
 
+    @OneToMany(mappedBy = "employeeEmployeeTechnology", fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<EmployeeTechnology> employeeTechnologies = new ArrayList<>();
 
+    @OneToMany(mappedBy = "employeeEmployeeLot", fetch = FetchType.EAGER)
+    @Builder.Default
+    private List<EmployeeLot> employeeLots = new ArrayList<>();
 
 }

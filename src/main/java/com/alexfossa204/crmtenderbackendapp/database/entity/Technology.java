@@ -1,6 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.technology.EmployeeTechnology;
+import com.alexfossa204.crmtenderbackendapp.database.entity.employee_technology.EmployeeTechnology;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
