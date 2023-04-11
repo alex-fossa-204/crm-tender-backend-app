@@ -6,13 +6,13 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 /**
- * Контроллер, предназначенный для выполнения действий над сотрудниками
+ * Контроллер, предназначенный для обработки HTTP запросов над сотрудниками
  */
 public interface EmployeeController {
 
     /**
      * HTTP:GET запрос на получении данных обо всех сотрудниках
-     * @return
+     * @return массив объектов
      */
     ResponseEntity<List<EmployeeDomainModel>> getRequestFindAllEmployees();
 

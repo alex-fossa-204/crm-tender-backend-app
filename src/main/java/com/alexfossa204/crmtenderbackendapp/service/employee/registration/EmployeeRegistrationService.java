@@ -11,7 +11,7 @@ public interface EmployeeRegistrationService {
     /**
      * Зарегистрировать сотрудника в системе
      * @param employeeRegistrationRequest запрос на регистрацию сотрудника
-     * @return ответ на сапрос о регистрации сотрудника в системе
+     * @return ответ на запрос о регистрации сотрудника в системе
      */
     EmployeeRegistrationResponse registerEmployee(EmployeeRegistrationRequest employeeRegistrationRequest);
 

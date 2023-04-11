@@ -4,13 +4,16 @@ import com.alexfossa204.crmtenderbackendapp.service.employee.registration.dto.Em
 import com.alexfossa204.crmtenderbackendapp.service.employee.registration.dto.EmployeeRegistrationResponse;
 import org.springframework.http.ResponseEntity;
 
+/**
+ * Компонент, предназначенный для обработки HTTP запросов по регистрации сотрудников в системе
+ */
 public interface EmployeeRegistrationController {
 
     /**
      * HTTP:POST запрос на сохранение данных сотрудника
-     * @param employeeRegistrationRequest
-     * @return
+     * @param employeeRegistrationRequest тело запроса
+     * @return тело ответа
      */
-    ResponseEntity<EmployeeRegistrationResponse> postRequestSaveEmployee(EmployeeRegistrationRequest employeeRegistrationRequest);
+    ResponseEntity<EmployeeRegistrationResponse> postRequestRegisterEmployee(EmployeeRegistrationRequest employeeRegistrationRequest);
 
 }

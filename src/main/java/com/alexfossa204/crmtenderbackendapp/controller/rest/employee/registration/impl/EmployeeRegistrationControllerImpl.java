@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/employee/registration")
-@Tag(name = "Employee Management API", description = "Данный компонент отвечает за предоставления функционала по добавлению сотрудников в систему")
+@Tag(name = "Employee Registration API", description = "Данный компонент отвечает за предоставления функционала по добавлению сотрудников в систему")
 public class EmployeeRegistrationControllerImpl implements EmployeeRegistrationController {
 
     private final EmployeeRegistrationService employeeRegistrationService;
 
     @PostMapping("/new")
     @Override
-    public ResponseEntity<EmployeeRegistrationResponse> postRequestSaveEmployee(@RequestBody EmployeeRegistrationRequest employeeRegistrationRequest) {
+    public ResponseEntity<EmployeeRegistrationResponse> postRequestRegisterEmployee(@RequestBody EmployeeRegistrationRequest employeeRegistrationRequest) {
         return ResponseEntity.ok(employeeRegistrationService.registerEmployee(employeeRegistrationRequest));
     }
 }
