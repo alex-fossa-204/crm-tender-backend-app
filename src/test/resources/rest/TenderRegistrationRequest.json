@@ -1,0 +1,35 @@
+{
+  "tenderNumber": "JK9879654964890PL",
+  "tenderName": "Сбер ЗАЛУПИП 100 живых душ",
+  "tenderGlobalState": "АКТИВНЫЙ",
+  "tenderTypeValue": "ПОДАЧА_КП",
+  "tenderDescription": {
+    "body": "Stubbed text data",
+    "footer": "Stubbed text data",
+    "header": "Stubbed text data"
+  },
+  "tenderCreationTimestamp": "2023-04-11T21:30:04.572496",
+  "tenderUpdateTimestamp": "2023-04-11T21:30:04.572496",
+  "tenderDeadlineTimestamp": "2023-09-21T15:00:00",
+  "tenderBaseLotQuantity": 5,
+  "tenderFinalLotQuantity": 10,
+  "tenderNmcCost": 35000,
+  "tenderFinalCost": 75000,
+  "organisations": {
+    "organisations": [
+      "Andersen",
+      "Aston"
+    ]
+  },
+  "bankGuaranty": false,
+  "tenderEstimationCriteria": {
+    "criteria1": "Stubbed text data",
+    "criteria2": "Stubbed text data",
+    "criteria3": "Stubbed text data"
+  },
+  "employeeDocumentRequirements": {
+    "requirement1": "Stubbed text data",
+    "requirement2": "Stubbed text data",
+    "requirement3": "Stubbed text data"
+  }
+}

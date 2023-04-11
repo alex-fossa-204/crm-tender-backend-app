@@ -1,6 +1,7 @@
-package com.alexfossa204.crmtenderbackendapp.service.tender;
+package com.alexfossa204.crmtenderbackendapp.service.tender.domain;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
+import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;
 
 import java.util.List;
 
@@ -13,26 +14,19 @@ public interface TenderService {
      * Найти все тендеры
      * @return массив тендеров
      */
-    List<Tender> findAllTenders();
-
-    /**
-     * Сохранить новый тендер
-     * @param tender тендер, подлежащий сохранению
-     * @return сохраненный сотрудник
-     */
-    Tender saveTender(Tender tender);
+    List<TenderDomainModel> findAllTenders();
 
     /**
      * Сохранить новый тендера
      * @param tender тендер, подлежащий обновлению
      * @return обновленный сотрудник
      */
-    Tender updateTender(Tender tender);
+    TenderDomainModel updateTender(TenderDomainModel tender);
 
     /**
      * Удалить тендер
      * @param tender тендер, подлежащий удалению
      */
-    void deleteTender(Tender tender);
+    void deleteTender(TenderDomainModel tender);
 
 }

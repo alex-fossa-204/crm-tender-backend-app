@@ -48,7 +48,7 @@ public class TenderStubFactory {
                                 "organisations", List.of("Andersen", "Aston")
                         )
                 )
-                .isBankGuaranty(true)
+                .bankGuaranty(true)
                 .tenderEstimationCriteria(
                         Map.of(
                                 "criteria1", "Stubbed text data",

@@ -98,9 +98,9 @@ public class Tender {
     @Getter
     private Map<String, List<String>> organisations;
 
-    @Column
+    @Column(name = "is_bank_guaranty")
     @Getter
-    private boolean isBankGuaranty;
+    private boolean bankGuaranty;
 
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
