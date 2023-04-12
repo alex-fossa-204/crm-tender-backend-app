@@ -8,6 +8,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
+import static com.alexfossa204.crmtenderbackendapp.config.mapstruct.MapstructConfig.GENERATE_LOCAL_DATE_TIME_EXPRESSION;
 import static com.alexfossa204.crmtenderbackendapp.config.mapstruct.MapstructConfig.GENERATE_UUID_EXPRESSION;
 
 /**
@@ -24,6 +25,7 @@ public interface ManagerToManagerRegistrationRequestMapper {
     @Mappings(value = {
             @Mapping(target = "managerState", source = "managerState"),
             @Mapping(target = "managerUuid", expression = GENERATE_UUID_EXPRESSION),
+            @Mapping(target = "registrationTimestamp", expression = GENERATE_LOCAL_DATE_TIME_EXPRESSION),
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "employeeLots", ignore = true),
             @Mapping(target = "role", ignore = true)

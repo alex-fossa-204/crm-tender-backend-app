@@ -175,6 +175,7 @@ create table if not exists lot
     id                     bigint unique generated always as identity,
     lot_state              lot_global_state_type not null,
     lot_uuid               uuid                  not null unique,
+    lot_name               varchar(256)          not null unique,
     lot_data               jsonb,
     lot_creation_timestamp timestamp,
     lot_update_timestamp   timestamp,

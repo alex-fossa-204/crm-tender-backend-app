@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/tenders/registration")
-@Tag(name = "Tender Registration API", description = "Данный компонент отвечает за предоставления функционала по регистрации менеджеров(пользователей) в систему")
+@Tag(name = "Tender Management API", description = "Данный компонент отвечает за предоставление функционала по управлению данными тендеров")
 public class TenderRegistrationControllerImpl implements TenderRegistrationController {
 
     private final TenderRegistrationService tenderRegistrationService;

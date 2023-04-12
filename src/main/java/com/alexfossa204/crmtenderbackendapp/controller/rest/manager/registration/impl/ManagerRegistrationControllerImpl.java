@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/manager/registration")
-@Tag(name = "Manager(User) Registration API", description = "Данный компонент отвечает за предоставление функционала по регистрации менеджеров(пользователей) в системе")
+@Tag(name = "Manager(User) Management API", description = "Данный компонент отвечает за предоставления функционала управления над менеджерами(пользователями), зарегистрированными в CRM")
 public class ManagerRegistrationControllerImpl implements ManagerRegistrationController {
 
     private final ManagerRegistrationService managerRegistrationService;

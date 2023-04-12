@@ -11,7 +11,7 @@ import java.util.List;
 public interface EmployeeController {
 
     /**
-     * HTTP:GET запрос на получении данных обо всех сотрудниках
+     * HTTP:GET запрос на получение данных обо всех сотрудниках
      * @return массив объектов
      */
     ResponseEntity<List<EmployeeDomainModel>> getRequestFindAllEmployees();

@@ -35,15 +35,6 @@ public class ManagerRegistrationRequest {
     private Map<String, String> contacts;
 
     @JsonProperty
-    private LocalDateTime registrationTimestamp;
-
-    @JsonProperty
-    private LocalDateTime lastLoginTimestamp;
-
-    @JsonProperty
-    private LocalDateTime updateTimestamp;
-
-    @JsonProperty
     private String generalInfo;
 
     @JsonProperty

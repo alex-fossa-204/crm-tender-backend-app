@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/employee/registration")
-@Tag(name = "Employee Registration API", description = "Данный компонент отвечает за предоставления функционала по добавлению сотрудников в систему")
+@Tag(name = "Employee Management API", description = "Данный компонент отвечает за предоставления функционала управления над сотрудниками, зарегистрированными в CRM")
 public class EmployeeRegistrationControllerImpl implements EmployeeRegistrationController {
 
     private final EmployeeRegistrationService employeeRegistrationService;

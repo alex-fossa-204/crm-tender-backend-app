@@ -26,6 +26,7 @@ public class LotStubFactory {
         var builder = Lot.builder()
                 .lotState(LotGlobalStateType.АКТИВНЫЙ)
                 .lotUuid(UUID.randomUUID())
+                .lotName("Java Senior Developer Lot")
                 .lotData(
                         Map.of(
                                 "lot", "Тестовые данные лота",

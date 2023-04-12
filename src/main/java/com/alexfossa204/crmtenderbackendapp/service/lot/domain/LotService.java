@@ -1,6 +1,6 @@
-package com.alexfossa204.crmtenderbackendapp.service.lot;
+package com.alexfossa204.crmtenderbackendapp.service.lot.domain;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 
 import java.util.List;
 
@@ -13,26 +13,26 @@ public interface LotService {
      * Найти все лоты
      * @return массив лоты
      */
-    List<Lot> findAllLots();
+    List<LotDomainModel> findAllLots();
 
     /**
      * Сохранить нового лота
      * @param lot лот, подлежащий сохранению
      * @return сохраненный лот
      */
-    Lot saveLot(Lot lot);
+    LotDomainModel saveLot(LotDomainModel lot);
 
     /**
      * Сохранить нового лота
      * @param lot лот, подлежащий обновлению
      * @return обновленный лот
      */
-    Lot updateLot(Lot lot);
+    LotDomainModel updateLot(LotDomainModel lot);
 
     /**
      * Удалить лота
      * @param lot лот, подлежащий удалению
      */
-    void deleteLot(Lot lot);
+    void deleteLot(LotDomainModel lot);
 
 }

@@ -3,6 +3,7 @@ package com.alexfossa204.crmtenderbackendapp.controller.rest.employee.registrati
 import com.alexfossa204.crmtenderbackendapp.service.employee.registration.dto.EmployeeRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.employee.registration.dto.EmployeeRegistrationResponse;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * Компонент, предназначенный для обработки HTTP запросов по регистрации сотрудников в системе
@@ -14,6 +15,6 @@ public interface EmployeeRegistrationController {
      * @param employeeRegistrationRequest тело запроса
      * @return тело ответа
      */
-    ResponseEntity<EmployeeRegistrationResponse> postRequestRegisterEmployee(EmployeeRegistrationRequest employeeRegistrationRequest);
+    ResponseEntity<EmployeeRegistrationResponse> postRequestRegisterEmployee(@RequestBody EmployeeRegistrationRequest employeeRegistrationRequest);
 
 }

@@ -50,6 +50,9 @@ public class Lot {
     @Column
     private UUID lotUuid;
 
+    @Column
+    private String lotName;
+
     @Column(columnDefinition = "jsonb")
     @Type(JsonType.class)
     private Map<String, String> lotData;

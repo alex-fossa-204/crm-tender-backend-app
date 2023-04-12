@@ -33,12 +33,6 @@ public class TenderRegistrationRequest {
     private Map<String, String> tenderDescription;
 
     @JsonProperty
-    private LocalDateTime tenderCreationTimestamp;
-
-    @JsonProperty
-    private LocalDateTime tenderUpdateTimestamp;
-
-    @JsonProperty
     private LocalDateTime tenderDeadlineTimestamp;
 
     @JsonProperty
