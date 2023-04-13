@@ -4,6 +4,7 @@ import com.alexfossa204.crmtenderbackendapp.database.entity.Customer;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderGlobalStateType;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderType;
+import com.github.javafaker.Faker;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,6 +13,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class TenderStubFactory {
+
+    private static final Faker faker = new Faker();
 
     public static Tender supplyTenderDefaultStub(Customer customer) {
         return supplyTenderDefaultStub(builder -> {
@@ -25,7 +28,7 @@ public class TenderStubFactory {
 
     public static Tender supplyTenderDefaultStub(Consumer<Tender.TenderBuilder> tenderBuilderConsumer) {
         var builder = Tender.builder()
-                .tenderNumber("JK9879654963985PL")
+                .tenderNumber(faker.bothify("JK#######BN######PL"))
                 .tenderName("Сбер КИБ 100 живых душ")
                 .tenderGlobalState(TenderGlobalStateType.АКТИВНЫЙ)
                 .tenderTypeValue(TenderType.ПОДАЧА_КП)

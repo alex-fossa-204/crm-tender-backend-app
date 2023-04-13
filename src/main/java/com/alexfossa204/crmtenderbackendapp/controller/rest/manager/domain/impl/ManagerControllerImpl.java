@@ -5,9 +5,11 @@ import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerServic
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class ManagerControllerImpl implements ManagerController {
 
     @GetMapping("/all")
     @Override
-    public ResponseEntity<List<ManagerDomainModel>> getRequestFindAllManagers() {
-        return ResponseEntity.ok(managerService.findAllManagers());
+    public ResponseEntity<List<ManagerDomainModel>> getRequestFindAllManagers(@RequestParam Integer pageNumber, @RequestParam Integer elementQuantity) {
+        return ResponseEntity.ok(managerService.findAllManagers(PageRequest.of(pageNumber, elementQuantity)));
     }
 }

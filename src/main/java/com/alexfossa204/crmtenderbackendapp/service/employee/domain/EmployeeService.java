@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.employee.domain;
 
 import com.alexfossa204.crmtenderbackendapp.service.employee.domain.dto.EmployeeDomainModel;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface EmployeeService {
      * Найти всех сотрудников
      * @return массив сотрудников
      */
-    List<EmployeeDomainModel> findAllEmployees();
+    List<EmployeeDomainModel> findAllEmployees(PageRequest pageRequest);
 
     /**
      * Сохранить нового сотрудника

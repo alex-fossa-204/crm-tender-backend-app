@@ -1,6 +1,8 @@
 package com.alexfossa204.crmtenderbackendapp.database.repository;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Employee;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,5 +13,7 @@ import java.util.UUID;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
     Optional<Employee> findByEmployeeUuid(UUID employeeUuid);
+
+    Page<Employee> findAll(Pageable pageable);
 
 }

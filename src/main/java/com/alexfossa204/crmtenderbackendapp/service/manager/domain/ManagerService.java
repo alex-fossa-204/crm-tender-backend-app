@@ -1,7 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public interface ManagerService {
      * Найти всех менеджеров
      * @return массив менеджеров
      */
-    List<ManagerDomainModel> findAllManagers();
+    List<ManagerDomainModel> findAllManagers(PageRequest pageRequest);
 
     /**
      * Сохранить нового сотрудника

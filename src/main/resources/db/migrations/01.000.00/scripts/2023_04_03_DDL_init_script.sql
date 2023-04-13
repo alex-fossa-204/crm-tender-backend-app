@@ -90,15 +90,15 @@ create table if not exists tender
     tender_description             jsonb,
     tender_creation_timestamp      timestamp                not null default current_timestamp,
     tender_update_timestamp        timestamp,
-    tender_deadline_timestamp      timestamp                not null,
+    tender_deadline_timestamp      timestamp,
     tender_base_lot_quantity       int,
     tender_final_lot_quantity      int,
     tender_nmc_cost                decimal                  not null,
     tender_final_cost              decimal,
-    organisations                  jsonb                    not null,
+    organisations                  jsonb,
     is_bank_guaranty               boolean                           default false,
-    tender_estimation_criteria     jsonb                    not null,
-    employee_document_requirements jsonb                    not null
+    tender_estimation_criteria     jsonb,
+    employee_document_requirements jsonb
 
 );
 

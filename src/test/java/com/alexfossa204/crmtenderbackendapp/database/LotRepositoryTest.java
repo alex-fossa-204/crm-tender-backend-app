@@ -20,7 +20,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
-//@ExtendWith(PostgresExtension.class)
+@ExtendWith(PostgresExtension.class)
 class LotRepositoryTest {
 
     @Autowired
@@ -35,11 +35,11 @@ class LotRepositoryTest {
     @Autowired
     private TenderPersistedStubFactory tenderPersistedStubFactory;
 
-//    @AfterEach
-//    void flushLotRepository() {
-//        lotRepository.deleteAll();
-//        tenderRepository.deleteAll();
-//    }
+    @AfterEach
+    void flushLotRepository() {
+        lotRepository.deleteAll();
+        tenderRepository.deleteAll();
+    }
 
     @Test
     void when_lot_attempt_to_save_with_empty_tender() {

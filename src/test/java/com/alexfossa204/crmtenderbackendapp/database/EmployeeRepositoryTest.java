@@ -16,11 +16,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.EmployeeStubFactory.supplyEmployeeDefaultStub;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
@@ -103,6 +109,22 @@ class EmployeeRepositoryTest {
                 () -> assertThat(persistedEmployeeAngularTechnology1, is(notNullValue()))
         );
 
+    }
+
+    @Test
+    void when_pageable_employee_list_attempt_to_read() {
+        int stubQuantity = 10;
+        IntStream.range(0, stubQuantity).forEach(action -> employeeRepository.save(supplyEmployeeDefaultStub()));
+
+        List<Employee> persistedEmployees = employeeRepository.findAll();
+
+        int pageCounter = 0;
+        int pageSize = 3;
+        List<Employee> employeePage = employeeRepository.findAll(PageRequest.of(pageCounter, pageSize)).getContent();
+        assertAll("Проверка страницы",
+                () -> assertThat(employeePage.size(), is(equalTo(pageSize))),
+                () -> assertThat(employeePage.size(), not(persistedEmployees.size()))
+        );
     }
 
 }

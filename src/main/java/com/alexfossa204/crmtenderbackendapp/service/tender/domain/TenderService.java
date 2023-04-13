@@ -1,7 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public interface TenderService {
      * Найти все тендеры
      * @return массив тендеров
      */
-    List<TenderDomainModel> findAllTenders();
+    List<TenderDomainModel> findAllTenders(PageRequest pageRequest);
 
     /**
      * Сохранить новый тендера

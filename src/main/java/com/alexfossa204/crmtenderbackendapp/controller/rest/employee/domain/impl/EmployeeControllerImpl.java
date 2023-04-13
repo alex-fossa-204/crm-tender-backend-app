@@ -5,11 +5,13 @@ import com.alexfossa204.crmtenderbackendapp.service.employee.domain.dto.Employee
 import com.alexfossa204.crmtenderbackendapp.service.employee.domain.EmployeeService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,8 +26,8 @@ public class EmployeeControllerImpl implements EmployeeController {
 
     @GetMapping("/all")
     @Override
-    public ResponseEntity<List<EmployeeDomainModel>> getRequestFindAllEmployees() {
-        return ResponseEntity.ok(employeeService.findAllEmployees());
+    public ResponseEntity<List<EmployeeDomainModel>> getRequestFindAllEmployees(@RequestParam Integer pageNumber, @RequestParam Integer elementQuantity) {
+        return ResponseEntity.ok(employeeService.findAllEmployees(PageRequest.of(pageNumber, elementQuantity)));
     }
 
     @PatchMapping("/update")

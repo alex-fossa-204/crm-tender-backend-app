@@ -7,6 +7,7 @@ import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDoma
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,8 +22,8 @@ public class TenderServiceImpl implements TenderService {
     private final TenderRepository tenderRepository;
 
     @Override
-    public List<TenderDomainModel> findAllTenders() {
-        return tenderRepository.findAll()
+    public List<TenderDomainModel> findAllTenders(PageRequest pageRequest) {
+        return tenderRepository.findAll(pageRequest).getContent()
                 .stream()
                 .map(tenderEntityToTenderDomainModelMapper::mapTenderEntityToTenderDomainModel)
                 .toList();

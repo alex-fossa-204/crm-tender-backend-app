@@ -5,9 +5,11 @@ import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotService;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class LotControllerImpl implements LotController {
 
     @GetMapping("/all")
     @Override
-    public ResponseEntity<List<LotDomainModel>> getRequestFindAllLots() {
-        return ResponseEntity.ok(lotService.findAllLots());
+    public ResponseEntity<List<LotDomainModel>> getRequestFindAllLots(@RequestParam Integer pageNumber, @RequestParam Integer elementQuantity) {
+        return ResponseEntity.ok(lotService.findAllLots(PageRequest.of(pageNumber, elementQuantity)));
     }
 }

@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.service.lot.registration.dto;
+package com.alexfossa204.crmtenderbackendapp.service.lot.assigning.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -6,24 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.UUID;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
 @Builder
 @Data
-public class LotRegistrationRequest {
+public class LotAssigningRequest {
 
     @JsonProperty
-    private String lotState;
+    private UUID employeeUuid;
 
     @JsonProperty
-    private String lotName;
+    private UUID lotUuid;
 
     @JsonProperty
-    private Map<String, String> lotData;
-
-    @JsonProperty
-    private String tenderNumber;
+    private UUID managerUuid;
 
 }

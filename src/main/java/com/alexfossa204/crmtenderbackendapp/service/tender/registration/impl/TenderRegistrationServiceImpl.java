@@ -4,7 +4,7 @@ import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository
 import com.alexfossa204.crmtenderbackendapp.service.tender.registration.TenderRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.tender.registration.dto.TenderRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.tender.registration.dto.TenderRegistrationResponse;
-import com.alexfossa204.crmtenderbackendapp.service.tender.registration.mapper.TenderEntityToTenderRequestMapper;
+import com.alexfossa204.crmtenderbackendapp.service.tender.registration.mapper.TenderEntityToTenderRegistrationRequestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TenderRegistrationServiceImpl implements TenderRegistrationService {
 
-    private final TenderEntityToTenderRequestMapper tenderEntityToTenderRequestMapper;
+    private final TenderEntityToTenderRegistrationRequestMapper tenderEntityToTenderRegistrationRequestMapper;
     private final TenderRepository tenderRepository;
 
 
@@ -24,11 +24,11 @@ public class TenderRegistrationServiceImpl implements TenderRegistrationService 
             throw new RuntimeException(String.format("Тендер уже зарегистрирован в системе: tenderNumber = %s ", tenderNumber));
         }
 
-        var detachedTender = tenderEntityToTenderRequestMapper.mapTenderRegistrationRequestToTenderEntity(tenderRegistrationRequest);
+        var detachedTender = tenderEntityToTenderRegistrationRequestMapper.mapTenderRegistrationRequestToTenderEntity(tenderRegistrationRequest);
 
         var persistedTender = tenderRepository.save(detachedTender);
 
-        return tenderEntityToTenderRequestMapper.mapTenderEntityToTenderRegistrationResponse(persistedTender);
+        return tenderEntityToTenderRegistrationRequestMapper.mapTenderEntityToTenderRegistrationResponse(persistedTender);
     }
 
     //TODO создать исключение на случай попытке сохранить тендер с указанным номером tenderNumber

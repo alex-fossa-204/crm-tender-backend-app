@@ -8,6 +8,7 @@ import com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper.Manage
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,8 +23,9 @@ public class ManagerServiceImpl implements ManagerService {
     private final ManagerRepository managerRepository;
 
     @Override
-    public List<ManagerDomainModel> findAllManagers() {
-        return managerRepository.findAll().stream()
+    public List<ManagerDomainModel> findAllManagers(PageRequest pageRequest) {
+        return managerRepository.findAll(pageRequest).getContent()
+                .stream()
                 .map(managerToManagerDomainModelMapper::mapManagerEntityToManagerDomainModel)
                 .toList();
     }

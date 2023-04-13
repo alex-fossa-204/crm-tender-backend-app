@@ -7,6 +7,7 @@ import com.alexfossa204.crmtenderbackendapp.database.repository.EmployeeReposito
 import com.alexfossa204.crmtenderbackendapp.service.employee.domain.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -24,8 +25,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeToEmployeeDomainModelMapper employeeToEmployeeDomainModelMapper;
 
     @Override
-    public List<EmployeeDomainModel> findAllEmployees() {
-        return employeeRepository.findAll()
+    public List<EmployeeDomainModel> findAllEmployees(PageRequest pageRequest) {
+        return employeeRepository.findAll(pageRequest).getContent()
                 .stream()
                 .map(employeeToEmployeeDomainModelMapper::mapEmployeeEntityToEmployeeDto)
                 .toList();
