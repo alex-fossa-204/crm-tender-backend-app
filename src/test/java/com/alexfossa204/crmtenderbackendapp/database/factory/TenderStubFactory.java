@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Customer;
+import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderGlobalStateType;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderType;
@@ -16,6 +17,13 @@ public class TenderStubFactory {
 
     private static final Faker faker = new Faker();
 
+    public static Tender supplyTenderDefaultStub(Customer customer, Manager tenderManager) {
+        return supplyTenderDefaultStub(builder -> {
+            builder.customer(customer);
+            builder.tenderManager(tenderManager);
+        });
+    }
+
     public static Tender supplyTenderDefaultStub(Customer customer) {
         return supplyTenderDefaultStub(builder -> {
             builder.customer(customer);
@@ -29,7 +37,7 @@ public class TenderStubFactory {
     public static Tender supplyTenderDefaultStub(Consumer<Tender.TenderBuilder> tenderBuilderConsumer) {
         var builder = Tender.builder()
                 .tenderNumber(faker.bothify("JK#######BN######PL"))
-                .tenderName("Сбер КИБ 100 живых душ")
+                .tenderName(String.format("Сбер КИБ 100 живых душ: %s - %s", faker.artist().name(), faker.animal().name()))
                 .tenderGlobalState(TenderGlobalStateType.АКТИВНЫЙ)
                 .tenderTypeValue(TenderType.ПОДАЧА_КП)
                 .tenderDescription(
