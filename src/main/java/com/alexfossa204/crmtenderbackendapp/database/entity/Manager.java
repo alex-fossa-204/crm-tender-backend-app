@@ -1,6 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.employee_lot.EmployeeLot;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
 import io.hypersistence.utils.hibernate.type.json.JsonType;
@@ -24,6 +23,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -87,7 +87,7 @@ public class Manager {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    @OneToMany(mappedBy = "lotManager", fetch = FetchType.EAGER)
-    private List<EmployeeLot> employeeLots;
-
+    @OneToMany(mappedBy = "tenderManager", fetch = FetchType.EAGER) //TODO убрать EAGER
+    @Builder.Default
+    private List<Tender> managerTenders = new ArrayList<>();
 }

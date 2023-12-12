@@ -1,8 +1,10 @@
 package com.alexfossa204.crmtenderbackendapp.database.factory;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
+import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.LotGlobalStateType;
+import com.github.javafaker.Faker;
 
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -10,6 +12,17 @@ import java.util.UUID;
 import java.util.function.Consumer;
 
 public class LotStubFactory {
+
+    private static final Faker faker = new Faker();
+
+
+
+    public static Lot supplyLotDefaultStub(Tender tender, Manager lotManager) {
+        return supplyLotDefaultStub(lotBuilder -> {
+            lotBuilder.tender(tender);
+            lotBuilder.lotManager(lotManager);
+        });
+    }
 
     public static Lot supplyLotDefaultStub(Tender tender) {
         return supplyLotDefaultStub(lotBuilder -> {
@@ -26,7 +39,7 @@ public class LotStubFactory {
         var builder = Lot.builder()
                 .lotState(LotGlobalStateType.АКТИВНЫЙ)
                 .lotUuid(UUID.randomUUID())
-                .lotName("Java Senior Developer Lot")
+                .lotName(String.format("Java Senior Developer Lot: %s %s %s", faker.artist().name(), faker.animal().name(), faker.name().username()))
                 .lotData(
                         Map.of(
                                 "lot", "Тестовые данные лота",

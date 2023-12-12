@@ -30,9 +30,6 @@ class LotRepositoryTest {
     private TenderRepository tenderRepository;
 
     @Autowired
-    private CustomerRepository customerRepository;
-
-    @Autowired
     private TenderPersistedStubFactory tenderPersistedStubFactory;
 
     @AfterEach
