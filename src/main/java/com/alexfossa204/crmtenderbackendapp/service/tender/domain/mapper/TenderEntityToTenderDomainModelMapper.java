@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.service.tender.domain;
+package com.alexfossa204.crmtenderbackendapp.service.tender.domain.mapper;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;

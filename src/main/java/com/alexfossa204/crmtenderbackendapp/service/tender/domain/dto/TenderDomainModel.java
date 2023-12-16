@@ -1,5 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto;
 
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -64,5 +65,8 @@ public class TenderDomainModel {
 
     @JsonProperty
     private Map<String, String> employeeDocumentRequirements;
+
+    @JsonProperty
+    private List<LotDomainModel> lots;
 
 }

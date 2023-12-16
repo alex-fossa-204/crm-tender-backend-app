@@ -35,6 +35,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "manager")
+//todo вообще попробовать обновить версию бута и попробовать вернуть vlad michalchea библиотеку для jsonb
+//todo добавить поле manager position
 public class Manager {
 
     @Id

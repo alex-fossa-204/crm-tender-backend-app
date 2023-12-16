@@ -1,8 +1,8 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain.impl;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.employee.dto.EmployeePageResponse;
 import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
-import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerService;
+import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper.ManagerToManagerDomainModelMapper;
 import lombok.RequiredArgsConstructor;
@@ -11,23 +11,24 @@ import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @Slf4j
 @Service
-public class ManagerServiceImpl implements ManagerService {
+public class ManagerDomainServiceImpl implements ManagerDomainService {
 
     private final ManagerToManagerDomainModelMapper managerToManagerDomainModelMapper;
 
     private final ManagerRepository managerRepository;
 
     @Override
-    public List<ManagerDomainModel> findAllManagers(PageRequest pageRequest) {
-        return managerRepository.findAll(pageRequest).getContent()
-                .stream()
-                .map(managerToManagerDomainModelMapper::mapManagerEntityToManagerDomainModel)
-                .toList();
+    public EmployeePageResponse selectManagerPage(PageRequest pageRequest) {
+        return EmployeePageResponse.of(
+                managerRepository.count(),
+                managerRepository.findAll(pageRequest).getContent()
+                        .stream()
+                        .map(managerToManagerDomainModelMapper::mapManagerEntityToManagerDomainModel)
+                        .toList()
+        );
     }
 
     @Override

@@ -1,20 +1,19 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.tender.dto.TenderPageResponse;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;
 import org.springframework.data.domain.PageRequest;
-
-import java.util.List;
 
 /**
  * Компонент, предназначенный для релизации базовых операций над тендерами
  */
-public interface TenderService {
+public interface TenderDomainService {
 
     /**
-     * Найти все тендеры
+     * Получить страницу данных тендеров
      * @return массив тендеров
      */
-    List<TenderDomainModel> findAllTenders(PageRequest pageRequest);
+    TenderPageResponse selectTenderPage(PageRequest pageRequest);
 
     /**
      * Сохранить новый тендера
