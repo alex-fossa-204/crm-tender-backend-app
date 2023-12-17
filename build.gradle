@@ -1,19 +1,16 @@
+import org.openapitools.generator.gradle.plugin.tasks.GenerateTask
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.0.5'
     id 'io.spring.dependency-management' version '1.1.0'
     id 'org.springdoc.openapi-gradle-plugin' version '1.6.0'
+    id "org.openapi.generator" version "7.1.0"
 }
 
 group = 'com.alexfossa204'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
-
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
 
 repositories {
     mavenCentral()
@@ -23,35 +20,21 @@ ext {
     set('testcontainersVersion', "1.17.6")
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-actuator'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
-    implementation 'com.github.javafaker:javafaker:1.0.2'
-
-    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
-    implementation 'org.liquibase:liquibase-core'
-    implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.3.1'
-
-    compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
-
-    annotationProcessor 'org.projectlombok:lombok'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
-    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework:spring-webflux'
-    testImplementation 'org.springframework.graphql:spring-graphql-test'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.testcontainers:postgresql'
-    testImplementation 'org.hamcrest:hamcrest-all:1.3'
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
-
-
+sourceSets {
+    main {
+        java {
+            srcDirs += [
+                    "$project.buildDir/generated/sources/openapi/src/main/java"
+            ]
+        }
+    }
+}
 
 dependencyManagement {
     imports {
@@ -59,13 +42,82 @@ dependencyManagement {
     }
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 bootJar {
     mainClass = 'com.alexfossa204.crmtenderbackendapp.CrmTenderBackendAppApplication'
     enabled = true
 }
-apply plugin: "org.springdoc.openapi-gradle-plugin"
 
+dependencies {
+    //spring-framework-dependencies
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    //lombok-dependencies
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
+
+    //springdoc-dependencies
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+
+    //mapstruct-dependencies
+    implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
+
+    //liquibase-dependencies
+    implementation 'org.liquibase:liquibase-core'
+
+    //database-postgres-dependencies
+    runtimeOnly 'org.postgresql:postgresql'
+
+    //jpa-hibernate-utilities-dependencies
+    implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.3.1'
+
+    //spring-test-dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework:spring-webflux'
+    testImplementation 'org.springframework.graphql:spring-graphql-test'
+
+    //testing-utilities-dependencies
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testImplementation 'org.testcontainers:junit-jupiter'
+    testImplementation 'org.testcontainers:postgresql'
+}
+
+task openApiGenerateTask(type: GenerateTask) {
+    generatorName = "spring"
+    inputSpec = "$rootDir/src/main/resources/openapi/tender-entity-schema.yml".toString()
+    outputDir = "${project.buildDir}/generated/sources/openapi".toString()
+    apiPackage = "com.alexfossa204.crmtenderbackendapp.generated.openapi.model"
+    modelPackage = "com.alexfossa204.crmtenderbackendapp.generated.openapi.model"
+    typeMappings = [
+            OffsetDateTime: "ZonedDateTime"
+    ]
+    importMappings = [
+            "java.time.OffsetDateTime": "java.time.ZonedDateTime"
+    ]
+    configOptions = [
+            dateLibrary    : "java8",
+            openApiNullable: "false",
+            useSpringBoot3 : "true"
+    ]
+
+    doLast {
+        delete(
+                "$project.buildDir/generated/sources/openapi/src/main/java/org",
+                "$project.buildDir/generated/sources/openapi/src/test"
+        )
+    }
+}
+
+tasks.named('test').configure {
+    useJUnitPlatform()
+}
+
+tasks.named('compileJava').configure {
+    source(openApiGenerateTask)
+}
+
+apply plugin: "org.springdoc.openapi-gradle-plugin"

@@ -5,15 +5,14 @@ import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.TenderStubFactory.supplyTenderDefaultStub;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
@@ -26,7 +25,7 @@ class TenderRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;
 
-    //@AfterEach
+    @AfterEach
     void flushTenderTable() {
         tenderRepository.deleteAll();
     }
@@ -39,7 +38,7 @@ class TenderRepositoryTest {
         Tender persistedTenderEntity = tenderRepository.save(detachedTenderEntity);
 
         assertAll("Проверка сохранения тестовой записи",
-                () -> assertThat(persistedTenderEntity, is(notNullValue()))
+                () -> assertThat(persistedTenderEntity).isNotNull()
         );
     }
 
@@ -54,8 +53,8 @@ class TenderRepositoryTest {
 
         //TODO переписать все тесты на Assertj
         assertAll("Проверка сохранения тестовой записи",
-                () -> assertThat(persistedTenderEntity, is(notNullValue())),
-                () -> assertThat(persistedTenderEntity.getCustomer(), is(notNullValue()))
+                () -> assertThat(persistedTenderEntity).isNotNull(),
+                () -> assertThat(persistedTenderEntity.getCustomer()).isNotNull()
         );
     }
 

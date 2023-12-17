@@ -3,6 +3,7 @@ package com.alexfossa204.crmtenderbackendapp.database;
 import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.RoleRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.ManagerStubFactory.supplyManagerDefaultStub;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
@@ -39,13 +38,10 @@ class ManagerRepositoryTest {
         var persistedManagerEntity = managerRepository.save(detachedManagerEntity);
 
         assertAll("Проверка сохранения тестовой записи",
-                () -> assertThat(persistedManagerEntity, is(notNullValue())),
-                () -> assertThat(persistedManagerEntity.getRole(), equalTo(persistedRole))
+                () -> Assertions.assertThat(persistedManagerEntity).isNotNull(),
+                () -> Assertions.assertThat(persistedManagerEntity.getRole()).isEqualTo(persistedRole)
         );
 
-
     }
-
-
 
 }

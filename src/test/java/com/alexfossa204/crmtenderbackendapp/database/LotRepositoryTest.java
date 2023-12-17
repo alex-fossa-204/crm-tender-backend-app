@@ -13,9 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.LotStubFactory.supplyLotDefaultStub;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest
@@ -44,7 +42,7 @@ class LotRepositoryTest {
         Lot persistedLotEntity = lotRepository.save(detachedLotEntity);
 
         assertAll("Проверка сохранения тестовой записи",
-                () -> assertThat(persistedLotEntity, is(notNullValue()))
+                () -> assertThat(persistedLotEntity).isNotNull()
         );
     }
 
@@ -58,8 +56,8 @@ class LotRepositoryTest {
         Lot persistedLotEntity = lotRepository.save(detachedLotEntity);
 
         assertAll("Проверка сохранения тестовой записи",
-                () -> assertThat(persistedLotEntity, is(notNullValue())),
-                () -> assertThat(persistedLotEntity.getTender(), is(notNullValue()))
+                () -> assertThat(persistedLotEntity).isNotNull(),
+                () -> assertThat(persistedLotEntity.getTender()).isNotNull()
         );
 
     }

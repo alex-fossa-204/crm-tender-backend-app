@@ -5,7 +5,7 @@ import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerReposito
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -15,6 +15,7 @@ import java.util.stream.IntStream;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.LotStubFactory.supplyLotDefaultStub;
 import static com.alexfossa204.crmtenderbackendapp.database.factory.TenderStubFactory.supplyTenderDefaultStub;
+import static org.assertj.core.api.Assertions.*;
 
 @ConditionalOnProperty(prefix = "feature-toggle.enabled-database-population-script", value = "true")
 @SpringBootTest
@@ -57,7 +58,7 @@ public class DatabasePopulationTest {
         });
 
         var actualTenders = tenderRepository.findAll();
-        Assertions.assertThat(actualTenders.size())
+        assertThat(actualTenders.size())
                 .isEqualTo(tenderInitialGenQuantity);
 
     }
@@ -65,7 +66,7 @@ public class DatabasePopulationTest {
     @Test
     void controlTenderSaveBatch() {
         var actualTenders = tenderRepository.findAll();
-        Assertions.assertThat(actualTenders).isNotEmpty();
+        assertThat(actualTenders).isNotEmpty();
     }
 
 }
