@@ -11,7 +11,6 @@ update role
 set privileges = '{"privileges":["create","read","update"]}'
 where id = '0f04bccf-a2ec-4526-81f0-1020cced671b';
 
-
 -- insert stable data customers
 insert into customer (customer_uuid, customer_name, customer_general_info)
 values ('5b944e82-2fa5-477c-b71e-bc23703fa28a', 'Альфа Банк Технологии', 'Норм ребята но дофига о себе думают'),

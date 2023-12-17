@@ -4,7 +4,6 @@ import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.factory.bean.TenderPersistedStubFactory;
-import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
 import org.junit.jupiter.api.AfterEach;

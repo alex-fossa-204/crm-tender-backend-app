@@ -18,8 +18,8 @@ public class TenderRegistrationServiceImpl implements TenderRegistrationService 
 
     @Override
     public TenderRegistrationResponse registerNewTender(TenderRegistrationRequest tenderRegistrationRequest) {
-        var tenderNumber = tenderRegistrationRequest.getTenderNumber();
-        var tenderOptional = tenderRepository.findByTenderNumber(tenderNumber);
+        var tenderNumber = tenderRegistrationRequest.getName();
+        var tenderOptional = tenderRepository.findByTenderUuid(tenderNumber);
         if (tenderOptional.isPresent()) {
             throw new RuntimeException(String.format("Тендер уже зарегистрирован в системе: tenderNumber = %s ", tenderNumber));
         }

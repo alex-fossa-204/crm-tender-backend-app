@@ -11,11 +11,8 @@ import org.mapstruct.Mappings;
 public interface TenderEntityToTenderRegistrationRequestMapper {
 
     @Mappings(value = {
-            @Mapping(target = "tenderGlobalState", source = "tenderGlobalState"),
-            @Mapping(target = "tenderTypeValue", source = "tenderTypeValue"),
-            @Mapping(target = "bankGuaranty", source = "bankGuaranty"),
-            @Mapping(target = "tenderCreationTimestamp", expression = "java(java.time.LocalDateTime.now())"),
-            @Mapping(target = "tenderUpdateTimestamp", expression = "java(java.time.LocalDateTime.now())"),
+            @Mapping(target = "tenderState", source = "tenderState"),
+            @Mapping(target = "typeValue", source = "typeValue"),
             @Mapping(target = "id", ignore = true),
             @Mapping(target = "customer", ignore = true),
             @Mapping(target = "lots", ignore = true),
@@ -24,8 +21,8 @@ public interface TenderEntityToTenderRegistrationRequestMapper {
     Tender mapTenderRegistrationRequestToTenderEntity(TenderRegistrationRequest tenderRegistrationRequest);
 
     @Mappings(value = {
-            @Mapping(target = "tenderGlobalState", source = "tenderGlobalState"),
-            @Mapping(target = "tenderTypeValue", source = "tenderTypeValue")
+            @Mapping(target = "tenderState", source = "tenderState"),
+            @Mapping(target = "typeValue", source = "typeValue")
     })
     TenderRegistrationResponse mapTenderEntityToTenderRegistrationResponse(Tender tender);
 

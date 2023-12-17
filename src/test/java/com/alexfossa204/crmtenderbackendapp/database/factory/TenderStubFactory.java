@@ -7,10 +7,7 @@ import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderGlobalSt
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.TenderType;
 import com.github.javafaker.Faker;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 import java.util.function.Consumer;
 
 public class TenderStubFactory {
@@ -35,46 +32,15 @@ public class TenderStubFactory {
     }
 
     public static Tender supplyTenderDefaultStub(Consumer<Tender.TenderBuilder> tenderBuilderConsumer) {
+        var localDateTimeNow = LocalDateTime.now();
         var builder = Tender.builder()
-                .tenderNumber(faker.bothify("JK#######BN######PL"))
-                .tenderName(String.format("Сбер КИБ 100 живых душ: %s - %s", faker.artist().name(), faker.animal().name()))
-                .tenderGlobalState(TenderGlobalStateType.АКТИВНЫЙ)
-                .tenderTypeValue(TenderType.ПОДАЧА_КП)
-                .tenderDescription(
-                        Map.of(
-                                "header", "Stubbed text data",
-                                "body", "Stubbed text data",
-                                "footer", "Stubbed text data"
-                        )
-                )
-                .tenderCreationTimestamp(LocalDateTime.now())
-                .tenderUpdateTimestamp(LocalDateTime.now())
-                .tenderDeadlineTimestamp(LocalDateTime.of(2023, 9, 21, 15, 0))
-                .tenderBaseLotQuantity(5)
-                .tenderFinalLotQuantity(10)
-                .tenderNmcCost(BigDecimal.valueOf(35000.00D))
-                .tenderFinalCost(BigDecimal.valueOf(75000.00D))
-                .organisations(
-                        Map.of(
-                                "organisations", List.of("Andersen", "Aston")
-                        )
-                )
-                .bankGuaranty(true)
-                .tenderEstimationCriteria(
-                        Map.of(
-                                "criteria1", "Stubbed text data",
-                                "criteria2", "Stubbed text data",
-                                "criteria3", "Stubbed text data"
-                        )
-                )
-                .employeeDocumentRequirements(
-                        Map.of(
-                                "requirement1", "Stubbed text data",
-                                "requirement2", "Stubbed text data",
-                                "requirement3", "Stubbed text data"
-                        )
-                );
-
+                .tenderUuid(faker.bothify("JK#######BN######PL"))
+                .name(String.format("Сбер КИБ 100 живых душ: %s - %s", faker.artist().name(), faker.animal().name()))
+                .creationTimestamp(localDateTimeNow)
+                .updateTimestamp(localDateTimeNow)
+                .deadlineTimestamp(LocalDateTime.of(localDateTimeNow.getYear() + 1, localDateTimeNow.getMonth(), localDateTimeNow.getDayOfMonth(), localDateTimeNow.getHour(), localDateTimeNow.getMinute()))
+                .tenderState(TenderGlobalStateType.АКТИВНЫЙ)
+                .typeValue(TenderType.ПОДАЧА_КП);
 
         tenderBuilderConsumer.accept(builder);
         return builder.build();

@@ -14,7 +14,6 @@ public interface LotEntityToLotRegistrationRequestMapper {
     @Mappings(value = {
             @Mapping(target = "lotState", source = "lotState"),
             @Mapping(target = "lotUuid", expression = "java(java.util.UUID.randomUUID())"),
-            @Mapping(target = "lotCreationTimestamp", expression = "java(java.time.LocalDateTime.now())"),
             @Mapping(target = "id", ignore = true)
     })
     Lot mapLotRegistrationRequestToLotEntity(LotRegistrationRequest lotRegistrationRequest);

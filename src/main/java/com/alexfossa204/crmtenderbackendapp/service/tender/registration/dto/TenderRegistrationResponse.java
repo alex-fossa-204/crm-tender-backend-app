@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 public class TenderRegistrationResponse {
 
     @JsonProperty
-    private String tenderGlobalState;
+    private String tenderState;
 
     @JsonProperty
-    private String tenderTypeValue;
+    private String typeValue;
 
     @JsonProperty
-    private LocalDateTime tenderCreationTimestamp;
+    private LocalDateTime creationTimestamp;
 
 }

@@ -1,16 +1,14 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto;
 
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
@@ -19,52 +17,25 @@ import java.util.Map;
 public class TenderDomainModel {
 
     @JsonProperty
-    private String tenderNumber;
+    private String tenderUuid;
 
     @JsonProperty
-    private String tenderName;
+    private String name;
 
     @JsonProperty
-    private String tenderGlobalState;
+    private String tenderState;
 
     @JsonProperty
-    private String tenderTypeValue;
+    private String typeValue;
 
     @JsonProperty
-    private Map<String, String> tenderDescription;
+    private LocalDateTime creationTimestamp;
 
     @JsonProperty
-    private LocalDateTime tenderCreationTimestamp;
+    private LocalDateTime updateTimestamp;
 
     @JsonProperty
-    private LocalDateTime tenderUpdateTimestamp;
-
-    @JsonProperty
-    private LocalDateTime tenderDeadlineTimestamp;
-
-    @JsonProperty
-    private Integer tenderBaseLotQuantity;
-
-    @JsonProperty
-    private Integer tenderFinalLotQuantity;
-
-    @JsonProperty
-    private BigDecimal tenderNmcCost;
-
-    @JsonProperty
-    private BigDecimal tenderFinalCost;
-
-    @JsonProperty
-    private Map<String, List<String>> organisations;
-
-    @JsonProperty
-    private boolean bankGuaranty;
-
-    @JsonProperty
-    private Map<String, String> tenderEstimationCriteria;
-
-    @JsonProperty
-    private Map<String, String> employeeDocumentRequirements;
+    private LocalDateTime deadlineTimestamp;
 
     @JsonProperty
     private List<LotDomainModel> lots;

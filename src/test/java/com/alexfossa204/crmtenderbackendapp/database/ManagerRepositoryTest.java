@@ -11,9 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.alexfossa204.crmtenderbackendapp.database.factory.ManagerStubFactory.supplyManagerDefaultStub;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBootTest

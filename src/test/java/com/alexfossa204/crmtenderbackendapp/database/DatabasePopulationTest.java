@@ -1,7 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.database;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Customer;
-import com.alexfossa204.crmtenderbackendapp.database.entity.Role;
 import com.alexfossa204.crmtenderbackendapp.database.factory.ManagerStubFactory;
 import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
@@ -41,8 +39,8 @@ public class DatabasePopulationTest {
         var persistedTenderManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub()); // TODO добавить роли
         var persistedLotManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub()); // TODO добавить роли
 
-        var tenderInitialGenQuantity = 10;
-        var lotInitialGenQuantity = 5;
+        var tenderInitialGenQuantity = 26;
+        var lotInitialGenQuantity = 31;
 
         var customer = customerRepository.findAll()
                 .stream()

@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto;
+package com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 @AllArgsConstructor(staticName = "of")
@@ -17,21 +16,24 @@ import java.util.UUID;
 public class LotDomainModel {
 
     @JsonProperty
-    private String lotState;
-
-    @JsonProperty
-    private String lotName;
-
-    @JsonProperty
     private UUID lotUuid;
 
     @JsonProperty
-    private Map<String, String> lotData;
+    private String lotState;
 
     @JsonProperty
-    private LocalDateTime lotCreationTimestamp;
+    private String typeValue;
 
     @JsonProperty
-    private LocalDateTime lotUpdateTimestamp;
+    private String name;
+
+    @JsonProperty
+    private LocalDateTime creationTimestamp;
+
+    @JsonProperty
+    private LocalDateTime updateTimestamp;
+
+    @JsonProperty
+    private LocalDateTime deadlineTimestamp;
 
 }

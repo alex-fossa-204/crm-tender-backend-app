@@ -5,7 +5,6 @@ import com.alexfossa204.crmtenderbackendapp.database.entity.Tender;
 import com.alexfossa204.crmtenderbackendapp.database.extension.PostgresExtension;
 import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +26,7 @@ class TenderRepositoryTest {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @AfterEach
+    //@AfterEach
     void flushTenderTable() {
         tenderRepository.deleteAll();
     }
@@ -53,6 +52,7 @@ class TenderRepositoryTest {
 
         Tender persistedTenderEntity = tenderRepository.save(detachedTenderEntity);
 
+        //TODO переписать все тесты на Assertj
         assertAll("Проверка сохранения тестовой записи",
                 () -> assertThat(persistedTenderEntity, is(notNullValue())),
                 () -> assertThat(persistedTenderEntity.getCustomer(), is(notNullValue()))

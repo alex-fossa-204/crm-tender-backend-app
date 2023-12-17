@@ -1,6 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.service.lot.registration.impl;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.LotRegistrationService;
@@ -23,7 +22,7 @@ public class LotRegistrationServiceImpl implements LotRegistrationService {
     @Override
     public LotRegistrationResponse registerNewLot(LotRegistrationRequest lotRegistrationRequest) {
         var tenderNumber = lotRegistrationRequest.getTenderNumber();
-        var persistedTender = tenderRepository.findByTenderNumber(tenderNumber)
+        var persistedTender = tenderRepository.findByTenderUuid(tenderNumber)
                 .orElseThrow(() -> new RuntimeException(String.format("Tender not found: tenderNumber = %s", tenderNumber)));
         var detachedLot = lotEntityToLotRegistrationRequestMapper.mapLotRegistrationRequestToLotEntity(lotRegistrationRequest);
         detachedLot.setTender(persistedTender);

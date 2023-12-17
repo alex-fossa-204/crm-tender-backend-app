@@ -1,8 +1,8 @@
 package com.alexfossa204.crmtenderbackendapp.service.lot.domain.impl;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotService;
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.mapper.LotEntityToLotDomainModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.lot.domain.mapper;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Lot;
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

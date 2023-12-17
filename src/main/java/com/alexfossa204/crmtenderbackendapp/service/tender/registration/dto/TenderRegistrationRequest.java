@@ -6,10 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
@@ -18,45 +15,25 @@ import java.util.Map;
 public class TenderRegistrationRequest {
 
     @JsonProperty
-    private String tenderNumber;
+    private String tenderUuid;
 
     @JsonProperty
-    private String tenderName;
+    private String name;
 
     @JsonProperty
-    private String tenderGlobalState;
+    private String tenderState;
 
     @JsonProperty
-    private String tenderTypeValue;
+    private String typeValue;
 
     @JsonProperty
-    private Map<String, String> tenderDescription;
+    private LocalDateTime creationTimestamp;
 
     @JsonProperty
-    private LocalDateTime tenderDeadlineTimestamp;
+    private LocalDateTime updateTimestamp;
 
     @JsonProperty
-    private Integer tenderBaseLotQuantity;
+    private LocalDateTime deadlineTimestamp;
 
-    @JsonProperty
-    private Integer tenderFinalLotQuantity;
-
-    @JsonProperty
-    private BigDecimal tenderNmcCost;
-
-    @JsonProperty
-    private BigDecimal tenderFinalCost;
-
-    @JsonProperty
-    private Map<String, List<String>> organisations;
-
-    @JsonProperty
-    private Boolean bankGuaranty;
-
-    @JsonProperty
-    private Map<String, String> tenderEstimationCriteria;
-
-    @JsonProperty
-    private Map<String, String> employeeDocumentRequirements;
 
 }

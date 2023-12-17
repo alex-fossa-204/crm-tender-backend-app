@@ -1,6 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.service.lot.domain;
 
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.List;

@@ -10,9 +10,8 @@ import org.mapstruct.Mappings;
 public interface TenderEntityToTenderDomainModelMapper {
 
     @Mappings(value = {
-            @Mapping(target = "tenderGlobalState", source = "tenderGlobalState"),
-            @Mapping(target = "tenderTypeValue", source = "tenderTypeValue"),
-            @Mapping(target = "bankGuaranty", source = "bankGuaranty")
+            @Mapping(target = "tenderState", source = "tenderState"),
+            @Mapping(target = "typeValue", source = "typeValue")
     })
     TenderDomainModel mapTenderEntityToTenderDomainModel(Tender tender);
 

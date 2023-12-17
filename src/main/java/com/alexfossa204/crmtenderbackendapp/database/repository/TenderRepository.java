@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface TenderRepository extends JpaRepository<Tender, Long> {
 
-    Optional<Tender> findByTenderNumber(String tenderNumber);
+    Optional<Tender> findByTenderUuid(String tenderNumber);
 
 }

@@ -1,14 +1,13 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.LotGlobalStateType;
+import com.alexfossa204.crmtenderbackendapp.database.entity.state.LotType;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
-import io.hypersistence.utils.hibernate.type.json.JsonType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -24,26 +23,30 @@ public class Lot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private UUID lotUuid;
+
     @Enumerated(EnumType.STRING)
     @Column(columnDefinition = "enum")
     @Type(PostgreSQLEnumType.class)
     private LotGlobalStateType lotState;
 
-    @Column
-    private UUID lotUuid;
+    @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "enum")
+    @Type(PostgreSQLEnumType.class)
+    private LotType typeValue;
 
     @Column
-    private String lotName;
-
-    @Column(columnDefinition = "jsonb")
-    @Type(JsonType.class)
-    private Map<String, String> lotData;
+    private String name;
 
     @Column
-    private LocalDateTime lotCreationTimestamp;
+    private LocalDateTime creationTimestamp;
 
     @Column
-    private LocalDateTime lotUpdateTimestamp;
+    private LocalDateTime updateTimestamp;
+
+    @Column
+    private LocalDateTime deadlineTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "tender_id")
