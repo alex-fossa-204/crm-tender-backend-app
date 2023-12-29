@@ -68,7 +68,7 @@ create table if not exists customer
     id                    bigint unique generated always as identity,
     customer_uuid         uuid unique  not null,
     customer_name         varchar(256) not null,
-    customer_general_info varchar(256) not null
+    customer_data jsonb
 );
 
 create table if not exists manager
@@ -83,12 +83,11 @@ create table if not exists manager
     role_id                uuid
 );
 
--- implement roles managers and etc
 create table if not exists role
 (
     id         uuid not null unique,
     role_name  varchar(16),
-    privileges jsonb
+    role_data jsonb
 );
 
 -- tender table alterations

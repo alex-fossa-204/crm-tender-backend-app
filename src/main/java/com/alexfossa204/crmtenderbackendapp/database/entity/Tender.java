@@ -53,6 +53,7 @@ public class Tender {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    //todo сделать генерацию данных их json2pojo схем объект типа TenderData
     @ManyToOne
     @JoinColumn(name = "tender_manager_id")
     private Manager tenderManager;

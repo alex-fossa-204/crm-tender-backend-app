@@ -1,23 +1,27 @@
 package com.alexfossa204.crmtenderbackendapp.config.web;
 
+import com.alexfossa204.crmtenderbackendapp.config.web.properties.WebConfigProperties;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@RequiredArgsConstructor
 @Configuration
 public class WebMvcConfig {
 
-    //todo spring property
-    public static final String allowedOrigin = "http://localhost:3000";
+    private final WebConfigProperties webConfigProperties;
 
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/tenders/**").allowedOrigins(allowedOrigin);
-                registry.addMapping("/managers/**").allowedOrigins(allowedOrigin);
+                webConfigProperties.getAllowedOrigins().forEach(allowedOrigin -> {
+                    registry.addMapping("/tenders/**").allowedOrigins(allowedOrigin);
+                    registry.addMapping("/managers/**").allowedOrigins(allowedOrigin);
+                });
             }
         };
     }

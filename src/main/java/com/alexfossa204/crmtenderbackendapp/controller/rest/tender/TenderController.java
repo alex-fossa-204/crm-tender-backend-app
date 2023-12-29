@@ -26,6 +26,7 @@ public class TenderController {
      * @param tenderRegistrationRequest тело запроса
      * @return тело ответа
      */
+    //TODO добавить openapi для генерации dto - request/response
     @PostMapping("/registration")
     public ResponseEntity<TenderRegistrationResponse> postRequestRegisterTender(@RequestBody TenderRegistrationRequest tenderRegistrationRequest) {
         return ResponseEntity.ok(tenderRegistrationService.registerNewTender(tenderRegistrationRequest));

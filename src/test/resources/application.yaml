@@ -8,6 +8,9 @@ spring:
     change-log: classpath:/db/changelog-master.xml
     enabled: true
 
+  web-mvc:
+    allowed-origins: ["http://localhost:3000"]
+
 springdoc:
   api-docs:
     enabled: true

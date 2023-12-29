@@ -30,11 +30,6 @@ public class Customer {
     @Setter
     private String customerName;
 
-    @Column
-    @Getter
-    @Setter
-    private String customerGeneralInfo;
-
     @OneToMany(mappedBy = "customer")
     @Setter
     @Builder.Default

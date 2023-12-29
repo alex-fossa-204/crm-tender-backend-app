@@ -6,6 +6,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.0'
     id 'org.springdoc.openapi-gradle-plugin' version '1.6.0'
     id "org.openapi.generator" version "7.1.0"
+    id "org.jsonschema2dataclass" version "6.0.0"
 }
 
 group = 'com.alexfossa204'
@@ -53,6 +54,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation "org.springframework.boot:spring-boot-configuration-processor"
 
     //lombok-dependencies
     compileOnly 'org.projectlombok:lombok'
@@ -86,29 +88,29 @@ dependencies {
     testImplementation 'org.testcontainers:postgresql'
 }
 
-task openApiGenerateTask(type: GenerateTask) {
-    generatorName = "spring"
-    inputSpec = "$rootDir/src/main/resources/openapi/tender-entity-schema.yml".toString()
-    outputDir = "${project.buildDir}/generated/sources/openapi".toString()
-    apiPackage = "com.alexfossa204.crmtenderbackendapp.generated.openapi.model"
-    modelPackage = "com.alexfossa204.crmtenderbackendapp.generated.openapi.model"
-    typeMappings = [
-            OffsetDateTime: "ZonedDateTime"
-    ]
-    importMappings = [
-            "java.time.OffsetDateTime": "java.time.ZonedDateTime"
-    ]
-    configOptions = [
-            dateLibrary    : "java8",
-            openApiNullable: "false",
-            useSpringBoot3 : "true"
-    ]
 
-    doLast {
-        delete(
-                "$project.buildDir/generated/sources/openapi/src/main/java/org",
-                "$project.buildDir/generated/sources/openapi/src/test"
-        )
+jsonSchema2Pojo {
+    executions{
+        // configuration doc: https://github.com/jsonschema2dataclass/js2d-gradle/blob/main/docs/usage/parameters_6.adoc#all-parameter-descriptions-and-notes
+        main {
+            io {
+                delimitersPropertyWord = '_'
+                source.setFrom files("${projectDir}/src/main/resources/json")
+            }
+            klass {
+                annotateGenerated = true
+                targetPackage = 'com.alexfossa204.crmtenderbackendapp.model'
+            }
+            methods {
+                annotateJsr303Jakarta = true
+                buildersInnerClass = true
+                builders = true
+            }
+            dateTime {
+                dateType = "java.time.LocalDate"
+
+            }
+        }
     }
 }
 
@@ -116,8 +118,4 @@ tasks.named('test').configure {
     useJUnitPlatform()
 }
 
-tasks.named('compileJava').configure {
-    source(openApiGenerateTask)
-}
-
-apply plugin: "org.springdoc.openapi-gradle-plugin"
+apply plugin: "org.jsonschema2dataclass"
