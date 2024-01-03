@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -36,6 +37,9 @@ public class TenderDomainModel {
 
     @JsonProperty
     private LocalDateTime deadlineTimestamp;
+
+    @JsonProperty
+    private ManagerDomainModel tenderManager;
 
     @JsonProperty
     private List<LotDomainModel> lots;

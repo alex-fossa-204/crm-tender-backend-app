@@ -105,6 +105,7 @@ jsonSchema2Pojo {
                 annotateJsr303Jakarta = true
                 buildersInnerClass = true
                 builders = true
+                buildersDynamic = true
             }
             dateTime {
                 dateType = "java.time.LocalDate"

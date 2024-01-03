@@ -3,6 +3,7 @@ package com.alexfossa204.crmtenderbackendapp.database.factory;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Role;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
+import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDateTime;
@@ -26,11 +27,19 @@ public class ManagerStubFactory {
 
     public static Manager supplyManagerDefaultStub(Consumer<Manager.ManagerBuilder> managerBuilderConsumer) {
         var localDataTimeNow = LocalDateTime.now();
+        var nameWithMiddle = faker.name().nameWithMiddle().split(" ");
+        var managerData = new ManagerData.ManagerDataBuilder()
+                .withFirstName(nameWithMiddle[0])
+                .withMiddleName(nameWithMiddle[1])
+                .withLastName(nameWithMiddle[2])
+                .withPosition("PM")
+                .build();
         var builder = Manager.builder()
+                .managerUuid(UUID.randomUUID())
                 .managerState(ManagerStateType.АКТИВНЫЙ)
                 .registrationTimestamp(localDataTimeNow)
                 .updateTimestamp(localDataTimeNow)
-                .managerUuid(UUID.randomUUID());
+                .managerData(managerData);
         managerBuilderConsumer.accept(builder);
         return builder.build();
     }

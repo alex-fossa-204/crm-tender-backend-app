@@ -4,29 +4,31 @@ import com.alexfossa204.crmtenderbackendapp.controller.rest.tender.dto.TenderPag
 import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.TenderDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;
-import com.alexfossa204.crmtenderbackendapp.service.tender.domain.mapper.TenderEntityToTenderDomainModelMapper;
+import com.alexfossa204.crmtenderbackendapp.service.tender.domain.mapper.TenderToTenderDomainModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Slf4j
 @Service
 public class TenderDomainServiceImpl implements TenderDomainService {
 
-    private final TenderEntityToTenderDomainModelMapper tenderEntityToTenderDomainModelMapper;
+    private final TenderToTenderDomainModelMapper tenderToTenderDomainModelMapper;
 
     private final TenderRepository tenderRepository;
 
+    @Transactional
     @Override
     public TenderPageResponse selectTenderPage(PageRequest pageRequest) {
         return TenderPageResponse.of(
                 tenderRepository.count(),
                 tenderRepository.findAll(pageRequest).getContent()
                         .stream()
-                        .map(tenderEntityToTenderDomainModelMapper::mapTenderEntityToTenderDomainModel)
+                        .map(tenderToTenderDomainModelMapper::mapTenderEntityToTenderDomainModel)
                         .toList()
 
         );

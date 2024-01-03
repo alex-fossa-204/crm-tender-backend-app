@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/managers")
-@Tag(name = "Manager(User) Management API", description = "Данный компонент отвечает за предоставления функционала управления над менеджерами(пользователями), зарегистрированными в CRM")
+@Tag(name = "Manager(User) Management API", description = "Данный компонент отвечает за предоставление функционала управления над менеджерами(пользователями), зарегистрированными в CRM")
 public class EmployeeController {
 
     private final ManagerRegistrationService managerRegistrationService;
@@ -39,4 +39,5 @@ public class EmployeeController {
     public ResponseEntity<EmployeePageResponse> getRequestFindAllManagers(@RequestParam Integer id, @RequestParam Integer items) {
         return ResponseEntity.ok(managerDomainService.selectManagerPage(PageRequest.of(id, items)));
     }
+
 }

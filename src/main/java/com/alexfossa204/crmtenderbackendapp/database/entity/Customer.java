@@ -9,6 +9,8 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Builder
 @Entity
 @Table(name = "customer")
@@ -16,22 +18,15 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
     private Long id;
 
     @Column
-    @Getter
-    @Setter
     private UUID customerUuid;
 
     @Column
-    @Getter
-    @Setter
     private String customerName;
 
     @OneToMany(mappedBy = "customer")
-    @Setter
     @Builder.Default
     private List<Tender> tenders = new ArrayList<>();
 

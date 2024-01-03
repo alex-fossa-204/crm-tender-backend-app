@@ -1,10 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.database;
 
 import com.alexfossa204.crmtenderbackendapp.database.factory.ManagerStubFactory;
-import com.alexfossa204.crmtenderbackendapp.database.repository.CustomerRepository;
-import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
-import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
-import com.alexfossa204.crmtenderbackendapp.database.repository.TenderRepository;
+import com.alexfossa204.crmtenderbackendapp.database.repository.*;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +31,16 @@ public class DatabasePopulationTest {
     @Autowired
     private ManagerRepository managerRepository;
 
+    @Autowired
+    private RoleRepository roleRepository;
+
     @Test
     public void populateTenders() {
 
-        var persistedTenderManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub()); // TODO добавить роли
-        var persistedLotManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub()); // TODO добавить роли
+        var persistedRole = roleRepository.findAll().stream().findFirst().orElseThrow();
+
+        var persistedTenderManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub(persistedRole)); // TODO добавить роли
+        var persistedLotManager = managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub(persistedRole)); // TODO добавить роли
 
         var tenderInitialGenQuantity = 26;
         var lotInitialGenQuantity = 31;

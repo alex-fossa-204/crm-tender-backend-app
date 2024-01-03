@@ -1,9 +1,9 @@
 package com.alexfossa204.crmtenderbackendapp.service.lot.domain.impl;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import com.alexfossa204.crmtenderbackendapp.database.repository.LotRepository;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotService;
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.mapper.LotEntityToLotDomainModelMapper;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.mapper.LotToLotDomainModelMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.NotImplementedException;
@@ -19,13 +19,13 @@ public class LotServiceImpl implements LotService {
 
     private final LotRepository lotRepository;
 
-    private final LotEntityToLotDomainModelMapper lotEntityToLotDomainModelMapper;
+    private final LotToLotDomainModelMapper lotToLotDomainModelMapper;
 
     @Override
     public List<LotDomainModel> findAllLots(PageRequest pageRequest) {
         return lotRepository.findAll(pageRequest).getContent()
                 .stream()
-                .map(lotEntityToLotDomainModelMapper::mapLotEntityToLotDomainModel)
+                .map(lotToLotDomainModelMapper::mapLotEntityToLotDomainModel)
                 .toList();
     }
 

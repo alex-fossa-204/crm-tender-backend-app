@@ -1,5 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto;
 
+import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -32,5 +33,8 @@ public class ManagerDomainModel {
 
     @JsonProperty
     private String role;
+
+    @JsonProperty
+    private ManagerData managerData;
     
 }

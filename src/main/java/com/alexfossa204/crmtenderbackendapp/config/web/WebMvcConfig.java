@@ -21,6 +21,7 @@ public class WebMvcConfig {
                 webConfigProperties.getAllowedOrigins().forEach(allowedOrigin -> {
                     registry.addMapping("/tenders/**").allowedOrigins(allowedOrigin);
                     registry.addMapping("/managers/**").allowedOrigins(allowedOrigin);
+                    registry.addMapping("/customers/**").allowedOrigins(allowedOrigin);
                 });
             }
         };

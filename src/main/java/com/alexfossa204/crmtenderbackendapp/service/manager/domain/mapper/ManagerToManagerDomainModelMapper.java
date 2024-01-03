@@ -14,17 +14,6 @@ import org.mapstruct.ReportingPolicy;
 public interface ManagerToManagerDomainModelMapper {
 
     /**
-     * Преобразовать тип dto в тип entity
-     * @param managerDomainModel экземпляр типа для преобразования
-     * @return преобразованный экземпляр
-     */
-    @Mappings(value = {
-            @Mapping(target = "managerState", source = "managerState"),
-            @Mapping(target = "role", ignore = true)
-    })
-    Manager mapManagerDomainModelToManagerEntity(ManagerDomainModel managerDomainModel);
-
-    /**
      * Преобразовать тип entity в тип dto
      * @param manager экземпляр типа для преобразования
      * @return преобразованный экземпляр
@@ -34,5 +23,16 @@ public interface ManagerToManagerDomainModelMapper {
             @Mapping(target = "role", source = "role.roleName")
     })
     ManagerDomainModel mapManagerEntityToManagerDomainModel(Manager manager);
+
+    /**
+     * Преобразовать тип dto в тип entity
+     * @param managerDomainModel экземпляр типа для преобразования
+     * @return преобразованный экземпляр
+     */
+    @Mappings(value = {
+            @Mapping(target = "managerState", source = "managerState"),
+            @Mapping(target = "role", ignore = true)
+    })
+    Manager mapManagerDomainModelToManagerEntity(ManagerDomainModel managerDomainModel);
 
 }

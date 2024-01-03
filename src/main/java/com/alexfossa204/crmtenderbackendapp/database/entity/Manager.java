@@ -1,7 +1,9 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
+import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import io.hypersistence.utils.hibernate.type.basic.PostgreSQLEnumType;
+import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -44,6 +46,10 @@ public class Manager {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @Column(columnDefinition = "jsonb")
+    @Type(JsonBinaryType.class)
+    private ManagerData managerData;
 
     //TODO убрать EAGER
     @OneToMany(mappedBy = "tenderManager", fetch = FetchType.EAGER)

@@ -4,41 +4,31 @@
     "description": "Метаданные менеджера",
     "type": "object",
     "required": [
-        "rqUid",
-        "rqTm"
+        "firstName",
+        "lastName",
+        "position"
     ],
     "additionalProperties": false,
     "properties": {
-        "rqUid": {
-            "description": "ID запроса",
+        "firstName": {
+            "description": "Имя по паспорту",
             "type": "string",
-            "maxLength": 32,
-            "pattern": "^([0-9]|[a-f]|[A-F]){32}$"
+            "maxLength": 64
         },
-        "rqTm": {
-            "description": "Дата и время передачи запроса",
-            "type": "object",
-            "existingJavaType": "java.time.LocalDateTime"
+        "lastName": {
+            "description": "Фамилия по паспорту",
+            "type": "string",
+            "maxLength": 64
         },
-        "managerInner": {
-            "type": "object",
-            "required": [
-                "salesChannelID",
-                "salesChannelCode"
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "salesChannelID": {
-                    "description": "ID канала продаж",
-                    "type": "string",
-                    "maxLength": 36
-                },
-                "salesChannelCode": {
-                    "description": "Код канала продаж",
-                    "type": "string",
-                    "maxLength": 20
-                }
-            }
+        "middleName": {
+            "description": "Отчество по паспорту",
+            "type": "string",
+            "maxLength": 64
+        },
+        "position": {
+            "description": "Занимаемая должность",
+            "type": "string",
+            "maxLength": 64
         }
     }
 }

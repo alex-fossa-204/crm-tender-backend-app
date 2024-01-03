@@ -1,6 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.lot;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.lot.dto.LotDomainModel;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotService;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.LotRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.dto.LotRegistrationRequest;
