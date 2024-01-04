@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.employee.dto.EmployeePageResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import org.springframework.data.domain.PageRequest;
 
@@ -10,7 +11,7 @@ public interface ManagerDomainService {
      * Найти всех менеджеров
      * @return массив менеджеров
      */
-    EmployeePageResponse selectManagerPage(PageRequest pageRequest);
+    ManagerPageResponse selectManagerPage(PageRequest pageRequest);
 
     /**
      * Сохранить нового сотрудника
@@ -21,8 +22,8 @@ public interface ManagerDomainService {
 
     /**
      * Удалить сотрудника
-     * @param manager сотрудник, подлежащий удалению
+     * @param managerUuid параметр запроса
      */
-    void deleteManager(ManagerDomainModel manager);
+    BaseDeleteResponse deleteManager(String managerUuid);
     
 }

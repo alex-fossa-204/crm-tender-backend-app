@@ -37,7 +37,7 @@ public class LotDomainModel {
     @JsonProperty
     private LocalDateTime deadlineTimestamp;
 
-//    @JsonProperty
-//    private ManagerDomainModel lotManager;
+    @JsonProperty
+    private ManagerDomainModel lotManager;
 
 }

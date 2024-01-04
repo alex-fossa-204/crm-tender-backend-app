@@ -59,6 +59,10 @@ public class DatabasePopulationTest {
 
         });
 
+        IntStream.range(0, 25).forEach(manager -> {
+            managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub(persistedRole));
+        });
+
         var actualTenders = tenderRepository.findAll();
         assertThat(actualTenders.size())
                 .isEqualTo(tenderInitialGenQuantity);

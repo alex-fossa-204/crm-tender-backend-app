@@ -13,8 +13,7 @@ public interface LotToLotDomainModelMapper {
     @Mappings(value = {
             @Mapping(target = "lotState", source = "lotState"),
             @Mapping(target = "lotUuid", source = "lotUuid"),
-            //todo проработать маппинг метод с энтити тендеров
-//            @Mapping(target = "lotManager.role", source = "lotManager.role.roleName")
+            @Mapping(target = "lotManager.role", source = "lotManager.role.roleName")
     })
     LotDomainModel mapLotEntityToLotDomainModel(Lot lot);
 

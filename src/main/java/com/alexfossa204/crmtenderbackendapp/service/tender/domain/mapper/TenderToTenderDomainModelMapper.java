@@ -7,7 +7,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
-@Mapper(componentModel = "spring", imports = LotToLotDomainModelMapper.class)
+@Mapper(componentModel = "spring",
+        imports = {
+                LotToLotDomainModelMapper.class
+        },
+        uses = {
+                LotToLotDomainModelMapper.class
+        }
+)
 public interface TenderToTenderDomainModelMapper {
 
     @Mappings(value = {

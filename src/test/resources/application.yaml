@@ -30,4 +30,4 @@ server:
       charset: UTF-8
 
 feature-toggle:
-  enabled-database-population-script: false
+  enabled-database-population-script: true

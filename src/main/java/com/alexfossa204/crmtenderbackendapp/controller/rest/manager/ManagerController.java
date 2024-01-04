@@ -1,6 +1,7 @@
-package com.alexfossa204.crmtenderbackendapp.controller.rest.employee;
+package com.alexfossa204.crmtenderbackendapp.controller.rest.manager;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.employee.dto.EmployeePageResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.ManagerRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
@@ -15,14 +16,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/managers")
 @Tag(name = "Manager(User) Management API", description = "Данный компонент отвечает за предоставление функционала управления над менеджерами(пользователями), зарегистрированными в CRM")
-public class EmployeeController {
+public class ManagerController {
 
     private final ManagerRegistrationService managerRegistrationService;
 
     private final ManagerDomainService managerDomainService;
 
     /**
-     * HTTP: POST запрос на сохранение данных менеджера
+     * REST: POST запрос на сохранение данных менеджера
      * @param managerRegistrationRequest тело запроса
      * @return тело ответа
      */
@@ -32,12 +33,28 @@ public class EmployeeController {
     }
 
     /**
-     * HTTP:GET запрос на получении данных обо всех менеджерах
+     * REST:GET запрос на получении данных обо всех менеджерах
      * @return массив объектов
      */
     @GetMapping("/page")
-    public ResponseEntity<EmployeePageResponse> getRequestFindAllManagers(@RequestParam Integer id, @RequestParam Integer items) {
-        return ResponseEntity.ok(managerDomainService.selectManagerPage(PageRequest.of(id, items)));
+    public ResponseEntity<ManagerPageResponse> getRequestFindAllManagers(@RequestParam Integer id, @RequestParam Integer items) {
+        return ResponseEntity.ok(
+                managerDomainService.selectManagerPage(PageRequest.of(id, items))
+        );
+    }
+
+    /**
+     * REST:DELETE запрос на удаление менеджера из системы
+     * @return массив объектов
+     */
+    //todo добавить обработку исключений
+    //todo добавить кодировку рантайма
+    //todo переделать удаление из таблицы на стороне реакта
+    @DeleteMapping("/deletion/{managerUuid}")
+    public ResponseEntity<BaseDeleteResponse> deleteRequestManager(@PathVariable String managerUuid) {
+        return ResponseEntity.ok(
+                managerDomainService.deleteManager(managerUuid)
+        );
     }
 
 }

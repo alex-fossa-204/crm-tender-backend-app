@@ -4,8 +4,11 @@ import com.alexfossa204.crmtenderbackendapp.config.web.properties.WebConfigPrope
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import static org.springframework.http.HttpMethod.*;
 
 @RequiredArgsConstructor
 @Configuration
@@ -19,9 +22,17 @@ public class WebMvcConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 webConfigProperties.getAllowedOrigins().forEach(allowedOrigin -> {
-                    registry.addMapping("/tenders/**").allowedOrigins(allowedOrigin);
-                    registry.addMapping("/managers/**").allowedOrigins(allowedOrigin);
-                    registry.addMapping("/customers/**").allowedOrigins(allowedOrigin);
+                    registry.addMapping("/tenders/**")
+                            .allowedOrigins(allowedOrigin)
+                            .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
+
+                    registry.addMapping("/managers/**")
+                            .allowedOrigins(allowedOrigin)
+                            .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
+
+                    registry.addMapping("/customers/**")
+                            .allowedOrigins(allowedOrigin)
+                            .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
                 });
             }
         };
