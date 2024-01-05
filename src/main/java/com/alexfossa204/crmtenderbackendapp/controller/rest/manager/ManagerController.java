@@ -49,7 +49,6 @@ public class ManagerController {
      */
     //todo добавить обработку исключений
     //todo добавить кодировку рантайма
-    //todo переделать удаление из таблицы на стороне реакта
     @DeleteMapping("/deletion/{managerUuid}")
     public ResponseEntity<BaseDeleteResponse> deleteRequestManager(@PathVariable String managerUuid) {
         return ResponseEntity.ok(

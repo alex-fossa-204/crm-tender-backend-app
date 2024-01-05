@@ -1,5 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.tender;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.tender.dto.TenderPageResponse;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.TenderDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.tender.registration.TenderRegistrationService;
@@ -22,23 +23,31 @@ public class TenderController {
     private final TenderDomainService tenderDomainService;
 
     /**
-     * HTTP:POST запрос на сохранение данных тендера
+     * REST:POST запрос на сохранение данных тендера
      * @param tenderRegistrationRequest тело запроса
      * @return тело ответа
      */
-    //TODO добавить openapi для генерации dto - request/response
     @PostMapping("/registration")
     public ResponseEntity<TenderRegistrationResponse> postRequestRegisterTender(@RequestBody TenderRegistrationRequest tenderRegistrationRequest) {
         return ResponseEntity.ok(tenderRegistrationService.registerNewTender(tenderRegistrationRequest));
     }
 
     /**
-     * HTTP:GET получить данные обо всех тендерах
+     * REST:GET получить данные обо всех тендерах
      * @return массив объектов
      */
     @GetMapping("/page")
     public ResponseEntity<TenderPageResponse> getRequestFindAllTenders(@RequestParam Integer id, @RequestParam Integer items) {
         return ResponseEntity.ok(tenderDomainService.selectTenderPage(PageRequest.of(id, items)));
+    }
+
+    /**
+     * REST:DELETE удалить данные тендера
+     * @return массив объектов
+     */
+    @DeleteMapping("/deletion/{tenderUuid}")
+    public ResponseEntity<BaseDeleteResponse> deleteRequestTender(@PathVariable String tenderUuid) {
+        return ResponseEntity.ok(tenderDomainService.deleteTender(tenderUuid));
     }
 
 }

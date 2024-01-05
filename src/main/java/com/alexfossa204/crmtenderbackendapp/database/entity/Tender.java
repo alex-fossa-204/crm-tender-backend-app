@@ -58,7 +58,7 @@ public class Tender {
     @JoinColumn(name = "tender_manager_id")
     private Manager tenderManager;
 
-    @OneToMany(mappedBy = "tender", fetch = FetchType.EAGER) //TODO сделать выгрузку по графу или субселекту
+    @OneToMany(mappedBy = "tender", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true) //TODO сделать выгрузку по графу или субселекту
     @Builder.Default
     private List<Lot> lots = new ArrayList<>();
 

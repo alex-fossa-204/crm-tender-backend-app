@@ -1,7 +1,8 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.lot;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.service.lot.domain.dto.LotDomainModel;
-import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotService;
+import com.alexfossa204.crmtenderbackendapp.service.lot.domain.LotDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.LotRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.dto.LotRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.lot.registration.dto.LotRegistrationResponse;
@@ -21,7 +22,7 @@ public class LotController {
 
     private final LotRegistrationService lotRegistrationService;
 
-    private final LotService lotService;
+    private final LotDomainService lotDomainService;
 
     /**
      * HTTP: POST запрос на сохранение данных лота
@@ -40,6 +41,15 @@ public class LotController {
      */
     @GetMapping("/all")
     public ResponseEntity<List<LotDomainModel>> getRequestFindAllLots(@RequestParam Integer pageNumber, @RequestParam Integer elementQuantity) {
-        return ResponseEntity.ok(lotService.findAllLots(PageRequest.of(pageNumber, elementQuantity)));
+        return ResponseEntity.ok(lotDomainService.findAllLots(PageRequest.of(pageNumber, elementQuantity)));
+    }
+
+    /**
+     * REST:DELETE удалить данные тендера
+     * @return массив объектов
+     */
+    @DeleteMapping("/deletion/{lotUuid}")
+    public ResponseEntity<BaseDeleteResponse> deleteRequestLot(@PathVariable String lotUuid) {
+        return ResponseEntity.ok(lotDomainService.deleteLot(lotUuid));
     }
 }

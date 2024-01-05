@@ -1,5 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.service.tender.domain;
 
+import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.tender.dto.TenderPageResponse;
 import com.alexfossa204.crmtenderbackendapp.service.tender.domain.dto.TenderDomainModel;
 import org.springframework.data.domain.PageRequest;
@@ -24,8 +25,8 @@ public interface TenderDomainService {
 
     /**
      * Удалить тендер
-     * @param tender тендер, подлежащий удалению
+     * @param tenderUuid тендер, подлежащий удалению
      */
-    void deleteTender(TenderDomainModel tender);
+    BaseDeleteResponse deleteTender(String tenderUuid);
 
 }

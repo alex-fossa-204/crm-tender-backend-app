@@ -33,6 +33,10 @@ public class WebMvcConfig {
                     registry.addMapping("/customers/**")
                             .allowedOrigins(allowedOrigin)
                             .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
+
+                    registry.addMapping("/lots/**")
+                            .allowedOrigins(allowedOrigin)
+                            .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
                 });
             }
         };
