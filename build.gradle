@@ -78,14 +78,14 @@ dependencies {
     implementation 'io.hypersistence:hypersistence-utils-hibernate-60:3.3.1'
 
     //spring-test-dependencies
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.springframework:spring-webflux'
-    testImplementation 'org.springframework.graphql:spring-graphql-test'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework:spring-webflux'
+    implementation 'org.springframework.graphql:spring-graphql-test'
 
     //testing-utilities-dependencies
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testImplementation 'org.testcontainers:junit-jupiter'
-    testImplementation 'org.testcontainers:postgresql'
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+    implementation 'org.testcontainers:junit-jupiter'
+    implementation 'org.testcontainers:postgresql'
 }
 
 

@@ -29,6 +29,28 @@
             "description": "Занимаемая должность",
             "type": "string",
             "maxLength": 64
+        },
+        "contacts": {
+            "type": "array",
+            "uniqueItems": true,
+            "additionalItems": false,
+            "minItems": 0,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "contactType": {
+                        "description": "Тип контакта",
+                        "type": "string",
+                        "maxLength": 20
+                    },
+                    "contactValue": {
+                        "description": "Значение контакта",
+                        "type": "string",
+                        "maxLength": 64
+                    }
+                }
+            }
         }
     }
 }
