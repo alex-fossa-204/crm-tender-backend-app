@@ -1,0 +1,51 @@
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Данные о позиции сотрудника в компании",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "firstName": {
+      "description": "Имя по паспорту",
+      "type": "string",
+      "maxLength": 64
+    },
+    "lastName": {
+      "description": "Фамилия по паспорту",
+      "type": "string",
+      "maxLength": 64
+    },
+    "middleName": {
+      "description": "Отчество по паспорту",
+      "type": "string",
+      "maxLength": 64
+    },
+    "birthDate": {
+      "description": "Отчество по паспорту",
+      "type": "string",
+      "maxLength": 64
+    },
+    "positions": {
+      "type": "array",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "$ref": "PositionData.json"
+      }
+    },
+    "contacts": {
+      "type": "array",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "minItems": 0,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "$ref": "ContactData.json"
+      }
+    }
+  }
+}

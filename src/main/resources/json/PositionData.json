@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Данные о позиции сотрудника в компании",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "shortcut": {
+      "description": "Сокращенное имя позиции",
+      "type": "string",
+      "maxLength": 20
+    },
+    "fullPosition": {
+      "description": "Полное имя позиции",
+      "type": "string",
+      "maxLength": 64
+    },
+    "grade": {
+      "description": "Уровень позиции",
+      "type": "string",
+      "maxLength": 64
+    },
+    "companyName": {
+      "description": "Название компании",
+      "type": "string",
+      "maxLength": 64
+    }
+  }
+}

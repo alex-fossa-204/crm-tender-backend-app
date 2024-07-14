@@ -1,7 +1,8 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.manager;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.base.dto.delete.BaseDeleteResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.delete.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.ManagerRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
@@ -33,7 +34,7 @@ public class ManagerController {
     }
 
     /**
-     * REST:GET запрос на получении данных обо всех менеджерах
+     * REST:GET запрос на получение данных обо всех менеджерах
      * @return массив объектов
      */
     @GetMapping("/page")
@@ -41,6 +42,16 @@ public class ManagerController {
         return ResponseEntity.ok(
                 managerDomainService.selectManagerPage(PageRequest.of(id, items))
         );
+    }
+
+    /**
+     * REST:GET запрос на получение данных менеджера по уникальному публичному id
+     * @param id публичный ID
+     * @return объект
+     */
+    @PostMapping("/{id}")
+    public ResponseEntity<ManagerResponse> getManagerByPublicId(@PathVariable String id) {
+        return ResponseEntity.ok(managerDomainService.findManagerByPublicId(id));
     }
 
     /**

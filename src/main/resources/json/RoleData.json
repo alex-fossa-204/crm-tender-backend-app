@@ -9,36 +9,11 @@
     ],
     "additionalProperties": false,
     "properties": {
-        "rqUid": {
-            "description": "ID запроса",
+        "role": {
+            "description": "Имя роли в системе",
             "type": "string",
             "maxLength": 32,
             "pattern": "^([0-9]|[a-f]|[A-F]){32}$"
-        },
-        "rqTm": {
-            "description": "Дата и время передачи запроса",
-            "type": "object",
-            "existingJavaType": "java.time.LocalDateTime"
-        },
-        "roleInner": {
-            "type": "object",
-            "required": [
-                "salesChannelID",
-                "salesChannelCode"
-            ],
-            "additionalProperties": false,
-            "properties": {
-                "salesChannelID": {
-                    "description": "ID канала продаж",
-                    "type": "string",
-                    "maxLength": 36
-                },
-                "salesChannelCode": {
-                    "description": "Код канала продаж",
-                    "type": "string",
-                    "maxLength": 20
-                }
-            }
         }
     }
 }

@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Данные о позиции сотрудника в компании",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "contactType": {
+      "description": "Тип контакта",
+      "type": "string",
+      "maxLength": 20
+    },
+    "contactValue": {
+      "description": "Значение контакта",
+      "type": "string",
+      "maxLength": 64
+    }
+  }
+}

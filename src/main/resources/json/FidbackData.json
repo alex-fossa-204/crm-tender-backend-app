@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Данные о позиции сотрудника в компании",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "description": "Идентификатор фидбека",
+      "type": "string",
+      "maxLength": 128
+    },
+    "type": {
+      "description": "Тип фидбека",
+      "type": "string",
+      "maxLength": 64
+    },
+    "creationDate": {
+      "description": "Дата создания фидбека",
+      "type": "string",
+      "maxLength": 64
+    },
+    "approveDate": {
+      "description": "Дата проверки фидбека",
+      "type": "string",
+      "maxLength": 64
+    },
+    "personStrengths": {
+      "description": "Сильные стороны",
+      "type": "string",
+      "maxLength": 64
+    },
+    "whatToImprove": {
+      "description": "Что следует улучшить",
+      "type": "string",
+      "maxLength": 64
+    },
+    "owner": {
+      "description": "Данные о владельце фидбека",
+      "type": "object",
+      "additionalProperties": false,
+      "$ref": "UserData.json"
+    }
+  }
+}

@@ -1,56 +1,26 @@
 {
-    "version": "1.0",
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "description": "Метаданные менеджера",
-    "type": "object",
-    "required": [
-        "firstName",
-        "lastName",
-        "position"
-    ],
-    "additionalProperties": false,
-    "properties": {
-        "firstName": {
-            "description": "Имя по паспорту",
-            "type": "string",
-            "maxLength": 64
-        },
-        "lastName": {
-            "description": "Фамилия по паспорту",
-            "type": "string",
-            "maxLength": 64
-        },
-        "middleName": {
-            "description": "Отчество по паспорту",
-            "type": "string",
-            "maxLength": 64
-        },
-        "position": {
-            "description": "Занимаемая должность",
-            "type": "string",
-            "maxLength": 64
-        },
-        "contacts": {
-            "type": "array",
-            "uniqueItems": true,
-            "additionalItems": false,
-            "minItems": 0,
-            "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "contactType": {
-                        "description": "Тип контакта",
-                        "type": "string",
-                        "maxLength": 20
-                    },
-                    "contactValue": {
-                        "description": "Значение контакта",
-                        "type": "string",
-                        "maxLength": 64
-                    }
-                }
-            }
-        }
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Метаданные менеджера",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "managerUuid": {
+      "description": "Уникальный идентификатор пользователя",
+      "type": "object",
+      "existingJavaType": "java.util.UUID"
+    },
+    "personalInfo": {
+      "description": "Персональные данные пользователя",
+      "type": "object",
+      "$ref": "PersonalInfo.json"
+
+    },
+    "department": {
+      "description": "Данные о департаменте сортудника",
+      "type": "object",
+      "$ref": "DepartmentData.json"
     }
+  }
 }

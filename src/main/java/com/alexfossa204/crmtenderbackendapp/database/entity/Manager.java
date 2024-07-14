@@ -9,8 +9,6 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -51,8 +49,4 @@ public class Manager {
     @Type(JsonBinaryType.class)
     private ManagerData managerData;
 
-    //TODO убрать EAGER
-    @OneToMany(mappedBy = "tenderManager", fetch = FetchType.EAGER)
-    @Builder.Default
-    private List<Tender> managerTenders = new ArrayList<>();
 }
