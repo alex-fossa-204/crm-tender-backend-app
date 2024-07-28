@@ -59,7 +59,7 @@ public class ManagerDomainServiceImpl implements ManagerDomainService {
 
     @Override
     public ManagerResponse findManagerByPublicId(String managerUuid) {
-        return managerToManagerResponseMapper.mapManagerEntityToManagerDomainModel(
+        return managerToManagerResponseMapper.mapManagerEntityToManagerResponse(
                 managerRepository.findByManagerUuid(UUID.fromString(managerUuid))
                         .orElseThrow(() -> new RuntimeException(String.format("Менеджер с uuid = %s - не найден", managerUuid)))
         );

@@ -34,7 +34,8 @@ alter table manager
 create table if not exists department
 (
     id                     bigint unique generated always as identity,
+    department_uuid        uuid unique not null,
     data                   jsonb, --json data
-    registration_timestamp timestamp not null default current_timestamp,
-    update_timestamp       timestamp not null default current_timestamp
+    registration_timestamp timestamp   not null default current_timestamp,
+    update_timestamp       timestamp   not null default current_timestamp
 );

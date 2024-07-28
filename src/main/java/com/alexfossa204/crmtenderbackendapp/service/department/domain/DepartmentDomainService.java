@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.department.domain;
 
 import com.alexfossa204.crmtenderbackendapp.controller.rest.department.dto.DepartmentPageResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.department.dto.DepartmentResponse;
 import org.springframework.data.domain.PageRequest;
 
 public interface DepartmentDomainService {
@@ -10,5 +11,7 @@ public interface DepartmentDomainService {
      * @return массив менеджеров
      */
     DepartmentPageResponse selectDepartmentPage(PageRequest pageRequest);
+
+    DepartmentResponse findDepartmentByPublicId(String departmentUuid);
 
 }

@@ -13,9 +13,8 @@
 
     },
     "department": {
-      "description": "Данные о департаменте сортудника",
-      "type": "object",
-      "$ref": "UserRegistrationDepartmentData.json"
+      "description": "Уникальный идентифиактор Департамента",
+      "type": "string"
     }
   }
 }

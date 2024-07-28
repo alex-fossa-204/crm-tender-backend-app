@@ -2,15 +2,13 @@ package com.alexfossa204.crmtenderbackendapp.controller.rest.department;
 
 
 import com.alexfossa204.crmtenderbackendapp.controller.rest.department.dto.DepartmentPageResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.department.dto.DepartmentResponse;
 import com.alexfossa204.crmtenderbackendapp.service.department.domain.DepartmentDomainService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,6 +23,11 @@ public class DepartmentController {
         return ResponseEntity.ok(
                 departmentDomainService.selectDepartmentPage(PageRequest.of(id, items))
         );
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<DepartmentResponse> getDepartmentByPublicId(@PathVariable String id) {
+        return ResponseEntity.ok(departmentDomainService.findDepartmentByPublicId(id));
     }
 
 }

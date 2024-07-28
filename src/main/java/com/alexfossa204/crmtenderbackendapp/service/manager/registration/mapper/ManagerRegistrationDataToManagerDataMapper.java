@@ -10,7 +10,9 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ManagerRegistrationDataToManagerDataMapper {
 
-    @Mappings(value = {})
+    @Mappings(value = {
+            @Mapping(target = "department", ignore = true)
+    })
     ManagerData mapManagerRegistrationDataToManagerData(ManagerRegistrationData managerRegistrationData);
 
 }

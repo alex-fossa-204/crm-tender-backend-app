@@ -22,6 +22,6 @@ public interface ManagerToManagerResponseMapper {
             @Mapping(target = "managerState", source = "managerState"),
             @Mapping(target = "role", source = "role.roleName")
     })
-    ManagerResponse mapManagerEntityToManagerDomainModel(Manager manager);
+    ManagerResponse mapManagerEntityToManagerResponse(Manager manager);
 
 }

@@ -8,12 +8,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @AllArgsConstructor(staticName = "of")
 @NoArgsConstructor
 @Builder
 @Data
 public class DepartmentDomainModel {
+
+    @JsonProperty
+    private UUID departmentUuid;
 
     @JsonProperty
     private DepartmentData data;

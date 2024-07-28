@@ -6,6 +6,7 @@ import com.alexfossa204.crmtenderbackendapp.model.UserData;
 import com.github.javafaker.Faker;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 public class DepartmentStubFactory {
 
@@ -19,6 +20,7 @@ public class DepartmentStubFactory {
                 .withLeader(leader)
                 .build();
         return Department.builder()
+                .departmentUuid(UUID.randomUUID())
                 .data(departmentData)
                 .registrationTimestamp(dateTime)
                 .updateTimestamp(dateTime)
