@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Метаданные менеджера",
+  "description": "Метаданные менеджера при регистрации",
   "type": "object",
   "required": [],
   "additionalProperties": false,
@@ -15,7 +15,7 @@
     "department": {
       "description": "Данные о департаменте сортудника",
       "type": "object",
-      "$ref": "UserDepartmentData.json"
+      "$ref": "UserRegistrationDepartmentData.json"
     }
   }
 }

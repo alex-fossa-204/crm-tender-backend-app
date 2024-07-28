@@ -1,6 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.database.factory;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Role;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
@@ -10,7 +9,6 @@ import com.github.javafaker.Faker;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 import java.util.function.Consumer;
 
@@ -142,9 +140,8 @@ public class ManagerStubFactory {
         );
 
         var managerData = new ManagerData.ManagerDataBuilder()
-                .withManagerUuid(UUID.randomUUID())
                 .withPersonalInfo(personalInfo)
-                .withDepartment(new DepartmentData.DepartmentDataBuilder()
+                .withDepartment(new UserDepartmentData.UserDepartmentDataBuilder()
                         .withName("Project Management")
                         .withShortcut("PMD")
                         .withPosition(position)

@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Данные о позиции сотрудника в компании",
+  "type": "object",
+  "required": [],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Полное название департамента",
+      "type": "string",
+      "maxLength": 20
+    },
+    "shortcut": {
+      "description": "Сокращенное имя департамента",
+      "type": "string",
+      "maxLength": 20
+    },
+    "position": {
+      "type": "object",
+      "$ref": "PositionData.json"
+    },
+    "registrationDate": {
+      "description": "Дата назначения в департамент",
+      "type": "string",
+      "maxLength": 20
+    },
+    "leader": {
+      "description": "Данные о руководителе департамента",
+      "type": "object",
+      "additionalProperties": false,
+      "$ref": "UserData.json"
+    },
+    "teams": {
+      "type": "array",
+      "uniqueItems": true,
+      "additionalItems": false,
+      "minItems": 0,
+      "items": {
+        "description": "Данные о командах, в которых работает сотрудник",
+        "type": "object",
+        "additionalProperties": false,
+        "$ref": "TeamData.json"
+      }
+    }
+  }
+}

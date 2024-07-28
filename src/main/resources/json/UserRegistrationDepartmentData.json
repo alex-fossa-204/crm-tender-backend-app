@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "description": "Данные о департаменте",
+  "description": "Данные о позиции сотрудника в компании",
   "type": "object",
   "required": [],
   "additionalProperties": false,
@@ -15,6 +15,10 @@
       "description": "Сокращенное имя департамента",
       "type": "string",
       "maxLength": 20
+    },
+    "position": {
+      "type": "object",
+      "$ref": "PositionData.json"
     },
     "leader": {
       "description": "Данные о руководителе департамента",

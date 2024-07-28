@@ -17,8 +17,8 @@ create table if not exists manager
 
 create table if not exists role
 (
-    id         uuid not null unique,
-    role_name  varchar(16),
+    id        uuid not null unique,
+    role_name varchar(16),
     role_data jsonb
 );
 
@@ -30,3 +30,11 @@ alter table manager
         on update no action
         on delete no action
         not valid;
+
+create table if not exists department
+(
+    id                     bigint unique generated always as identity,
+    data                   jsonb, --json data
+    registration_timestamp timestamp not null default current_timestamp,
+    update_timestamp       timestamp not null default current_timestamp
+);

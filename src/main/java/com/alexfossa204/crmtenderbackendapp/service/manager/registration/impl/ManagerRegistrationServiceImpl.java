@@ -5,6 +5,7 @@ import com.alexfossa204.crmtenderbackendapp.database.repository.RoleRepository;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.ManagerRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationResponse;
+import com.alexfossa204.crmtenderbackendapp.service.manager.registration.mapper.ManagerRegistrationDataToManagerDataMapper;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.mapper.ManagerToManagerRegistrationRequestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Service;
 public class ManagerRegistrationServiceImpl implements ManagerRegistrationService {
 
     private final ManagerToManagerRegistrationRequestMapper managerToManagerRegistrationRequestMapper;
+
+    private final ManagerRegistrationDataToManagerDataMapper managerRegistrationDataToManagerDataMapper;
 
     private final ManagerRepository managerRepository;
 
@@ -26,6 +29,12 @@ public class ManagerRegistrationServiceImpl implements ManagerRegistrationServic
 
         detachedManager.setRole(roleRepository.findByRoleName(roleName)
                 .orElseThrow(() -> new RuntimeException(String.format("Role not found: roleName = %s", roleName)))
+        );
+
+        detachedManager.setManagerData(
+                managerRegistrationDataToManagerDataMapper.mapManagerRegistrationDataToManagerData(
+                        managerRegistrationRequest.getData()
+                )
         );
 
         var persistedManager = managerRepository.save(detachedManager);

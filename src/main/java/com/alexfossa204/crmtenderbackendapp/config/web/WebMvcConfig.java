@@ -21,7 +21,7 @@ public class WebMvcConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 webConfigProperties.getAllowedOrigins().forEach(allowedOrigin -> {
-                    registry.addMapping("/tenders/**")
+                    registry.addMapping("/departments/**")
                             .allowedOrigins(allowedOrigin)
                             .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
 
@@ -29,11 +29,7 @@ public class WebMvcConfig {
                             .allowedOrigins(allowedOrigin)
                             .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
 
-                    registry.addMapping("/customers/**")
-                            .allowedOrigins(allowedOrigin)
-                            .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
-
-                    registry.addMapping("/lots/**")
+                    registry.addMapping("/roles/**")
                             .allowedOrigins(allowedOrigin)
                             .allowedMethods(GET.name(), POST.name(), PUT.name(), DELETE.name());
                 });

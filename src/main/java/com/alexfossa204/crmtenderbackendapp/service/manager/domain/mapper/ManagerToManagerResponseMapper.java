@@ -2,7 +2,6 @@ package com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper;
 
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
-import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
