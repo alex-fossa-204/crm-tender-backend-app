@@ -35,4 +35,8 @@ public class Department {
     @Column
     private LocalDateTime updateTimestamp;
 
+    @ManyToOne
+    @JoinColumn(name = "leader_id")
+    private Manager leader;
+
 }

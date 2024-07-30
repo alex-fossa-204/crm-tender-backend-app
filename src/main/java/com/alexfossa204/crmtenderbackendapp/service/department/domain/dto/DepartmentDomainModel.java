@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.department.domain.dto;
 
 import com.alexfossa204.crmtenderbackendapp.model.DepartmentData;
+import com.alexfossa204.crmtenderbackendapp.model.UserData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,5 +28,8 @@ public class DepartmentDomainModel {
 
     @JsonProperty
     private LocalDateTime updateTimestamp;
+
+    @JsonProperty
+    private UserData leader;
 
 }

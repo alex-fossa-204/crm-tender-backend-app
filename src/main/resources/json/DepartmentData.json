@@ -15,12 +15,6 @@
       "description": "Сокращенное имя департамента",
       "type": "string",
       "maxLength": 20
-    },
-    "leader": {
-      "description": "Данные о руководителе департамента",
-      "type": "object",
-      "additionalProperties": false,
-      "$ref": "UserData.json"
     }
   }
 }

@@ -37,5 +37,13 @@ create table if not exists department
     department_uuid        uuid unique not null,
     data                   jsonb, --json data
     registration_timestamp timestamp   not null default current_timestamp,
-    update_timestamp       timestamp   not null default current_timestamp
+    update_timestamp       timestamp   not null default current_timestamp,
+    leader_id bigint
 );
+
+alter table department
+    add constraint department_leader_fk foreign key (leader_id)
+        references manager (id) match simple
+        on update no action
+        on delete no action
+        not valid;

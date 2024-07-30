@@ -9,6 +9,8 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -48,5 +50,9 @@ public class Manager {
     @Column(columnDefinition = "jsonb")
     @Type(JsonBinaryType.class)
     private ManagerData managerData;
+
+    @OneToMany(mappedBy = "leader")
+    @Builder.Default
+    private List<Department> leadingDepartments = new ArrayList<>();
 
 }

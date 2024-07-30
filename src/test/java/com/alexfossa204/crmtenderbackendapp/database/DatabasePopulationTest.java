@@ -34,67 +34,41 @@ public class DatabasePopulationTest {
     @Test
     public void populateTenders() {
 
-        var persistedRole = roleRepository.findAll().stream().findFirst().orElseThrow();
+        final var persistedRole = roleRepository.findAll().stream().findFirst().orElseThrow();
 
         IntStream.range(0, 30).forEach(manager -> {
             managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub(persistedRole));
         });
-
+        final var leaderEntity1 = managerRepository.findAll().stream()
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Данные менеджера отсутсвуют"));
 
         departmentRepository.save(
                 DepartmentStubFactory.supplyDepartmentStub(
                         "Project Management Department",
                         "PMD",
-                        supplyLeader("Иванов", "Иван", "Иванович")
+                        leaderEntity1
                 )
         );
+
+        final var leaderEntity2 = managerRepository.findAll().stream()
+                .filter(manager -> !manager.getManagerUuid().equals(leaderEntity1.getManagerUuid()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Данные менеджера отсутсвуют"));
 
         departmentRepository.save(
                 DepartmentStubFactory.supplyDepartmentStub(
                         "Administration Department",
                         "AD",
-                        supplyLeader("Степанов", "Двимтрий", "Николаевич")
+                        leaderEntity2
                 )
         );
-
     }
 
-    private UserData supplyLeader(String lastname, String firstname, String middlename) {
-        var position = new PositionData.PositionDataBuilder()
-                .withShortcut("PC")
-                .withFullPosition("Project Coordinator")
-                .withGrade("J2")
-                .withCompanyName("Aston")
-                .build();
-        var positionSet = new HashSet<>();
-        positionSet.add(position);
-
-        var leaderContactSet = new HashSet<>();
-        leaderContactSet.add(new ContactData.ContactDataBuilder()
-                .withContactType("Skype")
-                .withContactValue("bigBossSkype")
-                .build());
-        leaderContactSet.add(new ContactData.ContactDataBuilder()
-                .withContactType("VK Teams")
-                .withContactValue("bigBossTeams")
-                .build());
-        leaderContactSet.add(new ContactData.ContactDataBuilder()
-                .withContactType("Email")
-                .withContactValue("bigBossEmail")
-                .build());
-        leaderContactSet.add(new ContactData.ContactDataBuilder()
-                .withContactType("Phone")
-                .withContactValue("+375 29 456-45-84")
-                .build());
-
-        return new UserData.UserDataBuilder()
-                .withFirstName(firstname)
-                .withMiddleName(middlename)
-                .withLastName(lastname)
-                .withBirthDate(LocalDate.now().toString())
-                .withContacts(leaderContactSet)
-                .withPositions(positionSet)
-                .build();
+    @Test
+    public void when_findAllDepartments() {
+        final var departments = departmentRepository.findAll();
+        System.out.println(departments);
     }
 
 }

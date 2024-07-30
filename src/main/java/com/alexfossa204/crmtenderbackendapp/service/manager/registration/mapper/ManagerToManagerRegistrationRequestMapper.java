@@ -2,6 +2,7 @@ package com.alexfossa204.crmtenderbackendapp.service.manager.registration.mapper
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
+import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationResponse;
 import org.mapstruct.Mapper;
@@ -28,6 +29,7 @@ public interface ManagerToManagerRegistrationRequestMapper {
             @Mapping(target = "updateTimestamp", expression = "java(java.time.LocalDateTime.now())"),
             @Mapping(target = "lastLoginTimestamp", expression = "java(java.time.LocalDateTime.now())"),
             @Mapping(target = "id", ignore = true),
+            @Mapping(target = "managerData", ignore = true),
             @Mapping(target = "role", ignore = true)
     })
     Manager mapManagerRegistrationRequestToManagerEntity(ManagerRegistrationRequest managerRegistrationRequest);
