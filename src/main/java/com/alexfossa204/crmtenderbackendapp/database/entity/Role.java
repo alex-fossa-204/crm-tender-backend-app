@@ -14,6 +14,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name = "role")
+@ToString(exclude = {"managers"})
 public class Role {
 
     @Id

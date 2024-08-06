@@ -19,7 +19,6 @@ public interface ManagerToManagerResponseMapper {
      * @return преобразованный экземпляр
      */
     @Mappings(value = {
-            @Mapping(target = "managerState", source = "managerState"),
             @Mapping(target = "role", source = "role.roleName")
     })
     ManagerResponse mapManagerEntityToManagerResponse(Manager manager);

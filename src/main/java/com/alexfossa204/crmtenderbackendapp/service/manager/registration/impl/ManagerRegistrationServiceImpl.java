@@ -44,7 +44,7 @@ public class ManagerRegistrationServiceImpl implements ManagerRegistrationServic
         //ищем департамент
         final var departmentEntity = departmentRepository.findByDepartmentUuid(UUID.fromString(managerRegistrationRequest.getData().getDepartment()))
                         .orElseThrow(() -> new RuntimeException(String.format("Department not found: roleName = %s", managerRegistrationRequest.getData().getDepartment())));
-        //маппим департамент в json (доработать - переделать на связь в таблице)
+        //маппим департамент в json (доработать - переделать на реляционную модель)
         final var userDepartmentData = departmentToDepartmentDomainModelMapper.mapDepartmentToUserDepartmentData(
                 departmentEntity
         );

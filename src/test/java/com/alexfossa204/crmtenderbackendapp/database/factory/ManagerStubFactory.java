@@ -153,7 +153,6 @@ public class ManagerStubFactory {
                 .build();
         var builder = Manager.builder()
                 .managerUuid(UUID.randomUUID())
-                .managerState(ManagerStateType.АКТИВНЫЙ)
                 .registrationTimestamp(localDataTimeNow)
                 .updateTimestamp(localDataTimeNow)
                 .managerData(managerData);

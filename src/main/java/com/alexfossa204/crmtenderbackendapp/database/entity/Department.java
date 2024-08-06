@@ -7,6 +7,8 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -16,6 +18,8 @@ import java.util.UUID;
 @Setter
 @Entity
 @Table(name = "department")
+@ToString(exclude = {"departmentManagers"})
+@EqualsAndHashCode(exclude = {"departmentManagers"})
 public class Department {
 
     @Id
@@ -38,5 +42,16 @@ public class Department {
     @ManyToOne
     @JoinColumn(name = "leader_id")
     private Manager leader;
+
+    @ManyToMany(
+            cascade = {CascadeType.ALL},
+            mappedBy = "managerDepartments"
+    )
+    @Builder.Default
+    private Set<Manager> departmentManagers = new HashSet<>();
+
+    @OneToMany(mappedBy = "department")
+    @Builder.Default
+    private Set<ManagerDepartment> managerDepartmentEntities = new HashSet<>();
 
 }

@@ -24,7 +24,6 @@ public interface ManagerToManagerRegistrationRequestMapper {
      */
     @Mappings(value = {
             @Mapping(target = "managerUuid", expression = "java(java.util.UUID.randomUUID())"),
-            @Mapping(target = "managerState", expression = "java(com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType.АКТИВНЫЙ)"),
             @Mapping(target = "registrationTimestamp", expression = "java(java.time.LocalDateTime.now())"),
             @Mapping(target = "updateTimestamp", expression = "java(java.time.LocalDateTime.now())"),
             @Mapping(target = "lastLoginTimestamp", expression = "java(java.time.LocalDateTime.now())"),

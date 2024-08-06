@@ -19,7 +19,6 @@ public interface ManagerToManagerDomainModelMapper {
      * @return преобразованный экземпляр
      */
     @Mappings(value = {
-            @Mapping(target = "managerState", source = "managerState"),
             @Mapping(target = "role", source = "role.roleName")
     })
     ManagerDomainModel mapManagerEntityToManagerDomainModel(Manager manager);
@@ -30,7 +29,6 @@ public interface ManagerToManagerDomainModelMapper {
      * @return преобразованный экземпляр
      */
     @Mappings(value = {
-            @Mapping(target = "managerState", source = "managerState"),
             @Mapping(target = "role", ignore = true)
     })
     Manager mapManagerDomainModelToManagerEntity(ManagerDomainModel managerDomainModel);

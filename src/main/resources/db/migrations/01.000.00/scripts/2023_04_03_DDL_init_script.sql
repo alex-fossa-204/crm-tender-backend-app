@@ -1,15 +1,9 @@
-create type manager_state_type as enum (
-    'АКТИВНЫЙ',
-    'ЗАБЛОКИРОВАН'
-    );
-
 create table if not exists manager
 (
     id                     bigint unique generated always as identity,
-    manager_uuid           uuid unique        not null,
-    manager_state          manager_state_type not null,
-    registration_timestamp timestamp          not null default current_timestamp,
-    update_timestamp       timestamp          not null default current_timestamp,
+    manager_uuid           uuid unique not null,
+    registration_timestamp timestamp   not null default current_timestamp,
+    update_timestamp       timestamp   not null default current_timestamp,
     last_login_timestamp   timestamp,
     manager_data           jsonb, --json data
     role_id                uuid
@@ -38,7 +32,7 @@ create table if not exists department
     data                   jsonb, --json data
     registration_timestamp timestamp   not null default current_timestamp,
     update_timestamp       timestamp   not null default current_timestamp,
-    leader_id bigint
+    leader_id              bigint
 );
 
 alter table department
@@ -47,3 +41,21 @@ alter table department
         on update no action
         on delete no action
         not valid;
+
+
+create table if not exists manager_department
+(
+    id               bigint unique generated always as identity,
+    manager_id       bigint,
+    department_id    bigint,
+    create_timestamp timestamp default current_timestamp,
+    update_timestamp timestamp default current_timestamp
+);
+
+alter table manager_department
+    add constraint manager_department_manager_fk foreign key (manager_id)
+        references manager (id) match full;
+
+alter table manager_department
+    add constraint manager_department_department_fk foreign key (department_id)
+        references department (id) match full;
