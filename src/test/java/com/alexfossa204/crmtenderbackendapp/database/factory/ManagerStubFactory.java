@@ -36,7 +36,6 @@ public class ManagerStubFactory {
                 .withShortcut("PC")
                 .withFullPosition("Project Coordinator")
                 .withGrade("J2")
-                .withCompanyName("Aston")
                 .build();
         var positionSet = new HashSet<>();
         positionSet.add(position);
@@ -141,15 +140,6 @@ public class ManagerStubFactory {
 
         var managerData = new ManagerData.ManagerDataBuilder()
                 .withPersonalInfo(personalInfo)
-                .withDepartment(new UserDepartmentData.UserDepartmentDataBuilder()
-                        .withName("Project Management")
-                        .withShortcut("PMD")
-                        .withPosition(position)
-                        .withRegistrationDate(localDataTimeNow.toString())
-                        .withLeader(leader)
-                        .withTeams(teamDataSet)
-                        .build()
-                )
                 .build();
         var builder = Manager.builder()
                 .managerUuid(UUID.randomUUID())

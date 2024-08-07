@@ -1,5 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.database;
 
+import com.alexfossa204.crmtenderbackendapp.database.component.ManagerDepartmentService;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Department;
 import com.alexfossa204.crmtenderbackendapp.database.entity.ManagerDepartment;
 import com.alexfossa204.crmtenderbackendapp.database.entity.Role;
@@ -45,6 +46,9 @@ public class DatabasePopulationTest {
     @Autowired
     private ManagerDepartmentRepository managerDepartmentRepository;
 
+    @Autowired
+    private ManagerDepartmentService managerDepartmentService;
+
     @Test
     void populate() {
         var role = Role.builder()
@@ -87,21 +91,26 @@ public class DatabasePopulationTest {
         );
 
 
-        final var manager = managerRepository.findAll()
-                .stream().findFirst()
-                .orElseThrow(() -> new RuntimeException("Не найдено ни одной записи"));
+        final var managers = managerRepository.findAll();
         final var department = departmentRepository.findAll().stream()
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Не найдено ни одной записи"));
 
-        final var managerDep = ManagerDepartment.builder()
-                .manager(manager)
-                .department(department)
-                .createTimestamp(LocalDateTime.now())
-                .updateTimestamp(LocalDateTime.now())
-                .build();
-        managerDepartmentRepository.save(managerDep);
-
+        managers.forEach(manager -> {
+            managerDepartmentService.saveManagerDepartment(
+                    ManagerDepartment.builder()
+                            .manager(manager)
+                            .department(department)
+                            .positionData(new PositionData.PositionDataBuilder()
+                                    .withFullPosition("Project Coordinator")
+                                    .withShortcut("PC")
+                                    .withGrade("J1")
+                                    .build())
+                            .createTimestamp(LocalDateTime.now())
+                            .updateTimestamp(LocalDateTime.now())
+                            .build()
+            );
+        });
 
     }
 

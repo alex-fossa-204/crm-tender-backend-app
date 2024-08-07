@@ -22,7 +22,7 @@ ext {
 }
 
 configurations {
-    compileOnly {
+    implementation {
         extendsFrom annotationProcessor
     }
 }
@@ -57,7 +57,7 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-configuration-processor"
 
     //lombok-dependencies
-    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
 

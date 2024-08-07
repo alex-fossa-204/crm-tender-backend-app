@@ -1,7 +1,10 @@
 package com.alexfossa204.crmtenderbackendapp.database.entity;
 
+import com.alexfossa204.crmtenderbackendapp.model.PositionData;
+import io.hypersistence.utils.hibernate.type.json.JsonBinaryType;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +30,10 @@ public class ManagerDepartment {
     @ManyToOne
     @JoinColumn(name = "department_id")
     private Department department;
+
+    @Column(columnDefinition = "jsonb")
+    @Type(JsonBinaryType.class)
+    private PositionData positionData;
 
     @Column
     private LocalDateTime createTimestamp;

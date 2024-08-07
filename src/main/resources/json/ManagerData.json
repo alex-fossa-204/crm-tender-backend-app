@@ -10,12 +10,6 @@
       "description": "Персональные данные пользователя",
       "type": "object",
       "$ref": "PersonalInfo.json"
-
-    },
-    "department": {
-      "description": "Данные о департаменте сортудника",
-      "type": "object",
-      "$ref": "UserDepartmentData.json"
     }
   }
 }

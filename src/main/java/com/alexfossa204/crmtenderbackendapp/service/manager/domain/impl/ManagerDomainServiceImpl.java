@@ -3,9 +3,11 @@ package com.alexfossa204.crmtenderbackendapp.service.manager.domain.impl;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.delete.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
+import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerDepartmentRepository;
 import com.alexfossa204.crmtenderbackendapp.database.repository.ManagerRepository;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
+import com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper.ManagerDepartmentToManagerDomainModelMapper;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper.ManagerToManagerDomainModelMapper;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper.ManagerToManagerResponseMapper;
 import lombok.RequiredArgsConstructor;
@@ -29,13 +31,17 @@ public class ManagerDomainServiceImpl implements ManagerDomainService {
 
     private final ManagerRepository managerRepository;
 
+    private final ManagerDepartmentRepository managerDepartmentRepository;
+
+    private final ManagerDepartmentToManagerDomainModelMapper managerDepartmentToManagerDomainModelMapper;
+
     @Override
     public ManagerPageResponse selectManagerPage(PageRequest pageRequest) {
         return ManagerPageResponse.of(
                 managerRepository.count(),
-                managerRepository.findAll(pageRequest).getContent()
+                managerDepartmentRepository.findAll(pageRequest)
                         .stream()
-                        .map(managerToManagerDomainModelMapper::mapManagerEntityToManagerDomainModel)
+                        .map(managerDepartmentToManagerDomainModelMapper::mapManagerEntityToManagerDomainModel)
                         .toList()
         );
     }

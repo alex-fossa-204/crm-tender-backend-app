@@ -20,11 +20,6 @@
       "description": "Уровень позиции",
       "type": "string",
       "maxLength": 64
-    },
-    "companyName": {
-      "description": "Название компании",
-      "type": "string",
-      "maxLength": 64
     }
   }
 }

@@ -48,6 +48,7 @@ create table if not exists manager_department
     id               bigint unique generated always as identity,
     manager_id       bigint,
     department_id    bigint,
+    position_data                   jsonb, --json data
     create_timestamp timestamp default current_timestamp,
     update_timestamp timestamp default current_timestamp
 );
