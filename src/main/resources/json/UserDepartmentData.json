@@ -16,6 +16,11 @@
       "type": "string",
       "maxLength": 20
     },
+    "companyName": {
+      "description": "Название огранизации",
+      "type": "string",
+      "maxLength": 20
+    },
     "position": {
       "type": "object",
       "$ref": "PositionData.json"

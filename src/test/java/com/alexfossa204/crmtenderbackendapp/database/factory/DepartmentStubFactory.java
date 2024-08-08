@@ -13,11 +13,12 @@ public class DepartmentStubFactory {
 
     private static final Faker faker = new Faker();
 
-    public static Department supplyDepartmentStub(String departmentName, String shortCut, Manager leaderEntity) {
+    public static Department supplyDepartmentStub(String departmentName, String shortCut, Manager leaderEntity, String companyName) {
         final var dateTime = LocalDateTime.now();
         final var departmentData = new DepartmentData.DepartmentDataBuilder()
                 .withName(departmentName)
                 .withShortcut(shortCut)
+                .withCompanyName(companyName)
                 .build();
         return Department.builder()
                 .departmentUuid(UUID.randomUUID())

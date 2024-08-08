@@ -51,12 +51,13 @@ public class ManagerDomainServiceImpl implements ManagerDomainService {
         throw new NotImplementedException("Method in not implemented");
     }
 
-    @Transactional
     @Override
     public BaseDeleteResponse deleteManager(String managerUuid) {
-        val currentManager = managerRepository.findByManagerUuid(UUID.fromString(managerUuid))
+        final var managerDepartment = managerDepartmentRepository.findManagerDepartmentByManager_ManagerUuid(UUID.fromString(managerUuid))
                 .orElseThrow(() -> new RuntimeException(String.format("Менеджер с uuid = %s - не найден", managerUuid)));
-        managerRepository.deleteById(currentManager.getId());
+        managerDepartmentRepository.deleteById(managerDepartment.getId());
+
+        managerRepository.deleteById(managerDepartment.getManager().getId());
         return BaseDeleteResponse.of(
                 managerUuid,
                 String.format("Менеджер с uuid = %s - удален успешно", managerUuid)
@@ -66,7 +67,7 @@ public class ManagerDomainServiceImpl implements ManagerDomainService {
     @Override
     public ManagerResponse findManagerByPublicId(String managerUuid) {
         return managerToManagerResponseMapper.mapManagerEntityToManagerResponse(
-                managerRepository.findByManagerUuid(UUID.fromString(managerUuid))
+                managerDepartmentRepository.findManagerDepartmentByManager_ManagerUuid(UUID.fromString(managerUuid))
                         .orElseThrow(() -> new RuntimeException(String.format("Менеджер с uuid = %s - не найден", managerUuid)))
         );
     }

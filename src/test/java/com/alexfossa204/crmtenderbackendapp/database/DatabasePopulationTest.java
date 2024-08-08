@@ -60,7 +60,7 @@ public class DatabasePopulationTest {
         final var persistedRole = roleRepository.findAll().stream()
                 .findFirst()
                 .orElseThrow();
-        IntStream.range(0, 30).forEach(manager -> {
+        IntStream.range(0, 20).forEach(manager -> {
             managerRepository.save(ManagerStubFactory.supplyManagerDefaultStub(persistedRole));
         });
 
@@ -73,7 +73,8 @@ public class DatabasePopulationTest {
                 DepartmentStubFactory.supplyDepartmentStub(
                         "Project Management Department",
                         "PMD",
-                        leaderEntity1
+                        leaderEntity1,
+                        "Aston"
                 )
         );
 
@@ -86,7 +87,8 @@ public class DatabasePopulationTest {
                 DepartmentStubFactory.supplyDepartmentStub(
                         "Administration Department",
                         "AD",
-                        leaderEntity2
+                        leaderEntity2,
+                        "Aston"
                 )
         );
 

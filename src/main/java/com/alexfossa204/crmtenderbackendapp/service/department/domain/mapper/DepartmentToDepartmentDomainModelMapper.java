@@ -24,8 +24,7 @@ public interface DepartmentToDepartmentDomainModelMapper {
     @Mappings(value = {
             @Mapping(target = "leader", expression = "java(mapDepartmentDataToLeaderData(department))"),
             @Mapping(target = "name", source = "department.data.name"),
-            @Mapping(target = "shortcut", source = "department.data.shortcut"),
-            @Mapping(target = "registrationDate", expression = "java(java.time.LocalDateTime.now().toString())")
+            @Mapping(target = "shortcut", source = "department.data.shortcut")
     })
     UserDepartmentData mapDepartmentToUserDepartmentData(Department department);
 

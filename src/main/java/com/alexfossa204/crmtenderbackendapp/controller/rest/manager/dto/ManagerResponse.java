@@ -1,6 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto;
 
 import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
+import com.alexfossa204.crmtenderbackendapp.model.UserDepartmentData;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +21,6 @@ public class ManagerResponse {
     private UUID managerUuid;
 
     @JsonProperty
-    private String managerState;
-
-    @JsonProperty
     private LocalDateTime registrationTimestamp;
 
     @JsonProperty
@@ -36,5 +34,8 @@ public class ManagerResponse {
 
     @JsonProperty
     private ManagerData managerData;
+
+    @JsonProperty
+    private UserDepartmentData department;
 
 }

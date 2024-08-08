@@ -15,6 +15,11 @@
       "description": "Сокращенное имя департамента",
       "type": "string",
       "maxLength": 20
+    },
+    "companyName": {
+      "description": "Название компании",
+      "type": "string",
+      "maxLength": 20
     }
   }
 }

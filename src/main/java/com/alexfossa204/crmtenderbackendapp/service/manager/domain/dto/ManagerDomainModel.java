@@ -39,6 +39,6 @@ public class ManagerDomainModel {
     private ManagerData managerData;
 
     @JsonProperty
-    private DepartmentData department; //todo заменить на подробную DTO с данными о лидере, позиции, регистрации в департаменте
+    private UserDepartmentData department; //todo заменить на подробную DTO с данными о лидере, позиции, регистрации в департаменте
     
 }

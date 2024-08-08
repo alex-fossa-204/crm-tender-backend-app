@@ -67,6 +67,7 @@ public class ManagerRegistrationServiceImpl implements ManagerRegistrationServic
                 .department(departmentEntity)
                 .createTimestamp(LocalDateTime.now())
                 .updateTimestamp(LocalDateTime.now())
+                .positionData(userPosition)
                 .build();
         managerDepartmentRepository.save(detachedManagerDepartment);
 
