@@ -25,8 +25,6 @@ import java.util.UUID;
 @Service
 public class ManagerDomainServiceImpl implements ManagerDomainService {
 
-    private final ManagerToManagerDomainModelMapper managerToManagerDomainModelMapper;
-
     private final ManagerToManagerResponseMapper managerToManagerResponseMapper;
 
     private final ManagerRepository managerRepository;
