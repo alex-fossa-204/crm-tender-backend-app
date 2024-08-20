@@ -1,6 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto;
 
-import com.alexfossa204.crmtenderbackendapp.model.DepartmentData;
 import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.alexfossa204.crmtenderbackendapp.model.UserDepartmentData;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,8 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor(staticName = "of")
@@ -39,6 +36,6 @@ public class ManagerDomainModel {
     private ManagerData managerData;
 
     @JsonProperty
-    private UserDepartmentData department; //todo заменить на подробную DTO с данными о лидере, позиции, регистрации в департаменте
+    private UserDepartmentData department;
     
 }

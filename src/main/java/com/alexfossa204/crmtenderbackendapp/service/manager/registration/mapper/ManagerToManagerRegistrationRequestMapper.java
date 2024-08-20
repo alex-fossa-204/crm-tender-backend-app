@@ -1,8 +1,6 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.registration.mapper;
 
 import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
-import com.alexfossa204.crmtenderbackendapp.database.entity.state.ManagerStateType;
-import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationResponse;
 import org.mapstruct.Mapper;

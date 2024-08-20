@@ -3,7 +3,6 @@ package com.alexfossa204.crmtenderbackendapp.service.manager.registration.mapper
 import com.alexfossa204.crmtenderbackendapp.model.ManagerData;
 import com.alexfossa204.crmtenderbackendapp.model.ManagerRegistrationData;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 

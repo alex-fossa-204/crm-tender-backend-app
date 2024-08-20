@@ -1,9 +1,9 @@
 package com.alexfossa204.crmtenderbackendapp.controller.rest.manager;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.delete.BaseDeleteResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
-import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.ManagerDomainService;
+import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.ManagerRegistrationService;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationRequest;
 import com.alexfossa204.crmtenderbackendapp.service.manager.registration.dto.ManagerRegistrationResponse;
@@ -50,7 +50,7 @@ public class ManagerController {
      * @return объект
      */
     @PostMapping("/{id}")
-    public ResponseEntity<ManagerResponse> getManagerByPublicId(@PathVariable String id) {
+    public ResponseEntity<ManagerDomainModel> getManagerByPublicId(@PathVariable String id) {
         return ResponseEntity.ok(managerDomainService.findManagerByPublicId(id));
     }
 

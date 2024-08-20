@@ -1,8 +1,7 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain;
 
-import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.delete.BaseDeleteResponse;
+import com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.BaseDeleteResponse;
 import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerPageResponse;
-import com.alexfossa204.crmtenderbackendapp.controller.rest.manager.dto.ManagerResponse;
 import com.alexfossa204.crmtenderbackendapp.service.manager.domain.dto.ManagerDomainModel;
 import org.springframework.data.domain.PageRequest;
 
@@ -31,6 +30,6 @@ public interface ManagerDomainService {
      * Найти сотрудника по публичному идентификатору
      * @return
      */
-    ManagerResponse findManagerByPublicId(String managerUuid);
+    ManagerDomainModel findManagerByPublicId(String managerUuid);
     
 }

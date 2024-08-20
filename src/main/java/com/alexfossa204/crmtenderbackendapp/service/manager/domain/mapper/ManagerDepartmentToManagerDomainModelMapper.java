@@ -1,6 +1,5 @@
 package com.alexfossa204.crmtenderbackendapp.service.manager.domain.mapper;
 
-import com.alexfossa204.crmtenderbackendapp.database.entity.Manager;
 import com.alexfossa204.crmtenderbackendapp.database.entity.ManagerDepartment;
 import com.alexfossa204.crmtenderbackendapp.model.UserData;
 import com.alexfossa204.crmtenderbackendapp.model.UserDepartmentData;
@@ -9,9 +8,6 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Компонент предназначенный для преобразования dto в entity

@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto.delete;
+package com.alexfossa204.crmtenderbackendapp.controller.rest.commons.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

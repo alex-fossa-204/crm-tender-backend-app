@@ -1,4 +1,4 @@
-package com.alexfossa204.crmtenderbackendapp.controller.rest.commons.role;
+package com.alexfossa204.crmtenderbackendapp.controller.rest.role;
 
 import com.alexfossa204.crmtenderbackendapp.service.role.domain.RoleDomainService;
 import com.alexfossa204.crmtenderbackendapp.service.role.domain.dto.RoleDomainModel;
